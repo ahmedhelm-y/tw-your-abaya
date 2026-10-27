@@ -66,12 +66,14 @@
     document.documentElement.style.setProperty("--color-primary-reverse", params.get("primary_reverse") || reverse_text);
     log(`store ${storeId} | mode ${mode} | layout ${layout} | template ${template}`);
 
+    // Paths resolve from the repo root, so the page also works when the repo is served from a sub-path
+    const fromRoot = (path) => new URL(`../${path}`, location.href).href;
     // ?template=dev renders every component in the manifest with its default values
     let components;
     if (template === "dev") {
-      components = (await fetch("/twilight-bundle.json").then((r) => r.json())).components;
+      components = (await fetch(fromRoot("twilight-bundle.json")).then((r) => r.json())).components;
     } else {
-      components = (await fetch(template.endsWith(".json") ? template : `/templates/${template}.json`).then((r) => r.json())).components;
+      components = (await fetch(template.endsWith(".json") ? template : fromRoot(`templates/${template}.json`)).then((r) => r.json())).components;
     }
     if (params.get("noheader")) components = components.filter((c) => c.name !== "page-header");
     // Without ?product the page sells the template own abaya, as the merchant would set it
@@ -112,7 +114,7 @@
       const el = document.createElement("salla-custom-component");
       el.setAttribute("component-name", component.name);
       el.setAttribute("bundle-id", "your-abaya-local");
-      el.setAttribute("assets", `/dist/${component.name}.js`);
+      el.setAttribute("assets", fromRoot(`dist/${component.name}.js`));
       el.setAttribute("config", JSON.stringify(wrapper));
       // Page length to scroll through before the footer, so sticky parts can be checked
       if (component.name === "page-footer" && params.get("filler") !== "0") {
