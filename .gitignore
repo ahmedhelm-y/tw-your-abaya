@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+*.log
+.env
+.env.*
+.idea/
+.vscode/
+.salla-preview.json
+
+# Local tooling / notes
+CLAUDE.md
+.claude/
+.playwright-mcp/
+
+# Plan workspaces
+.superpowers/

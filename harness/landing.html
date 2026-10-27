@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your abaya landing harness</title>
+  <!-- Same bootstrap as theme-landing-page: lit from an import map, Twilight, the bundles core and Tailwind's reset -->
+  <script type="importmap">{ "imports": { "lit": "https://esm.run/lit", "lit/": "https://esm.run/lit/" } }</script>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <link rel="stylesheet" href="https://cdn.salla.network/fonts/sallaicons.css" />
+  <link rel="stylesheet" href="https://cdn.salla.network/fonts/pingarlt.css" />
+  <style>
+    body { font-family: var(--font-main, "PingARLT"), sans-serif; }
+    #harness-log { position: fixed; bottom: 0; inset-inline: 0; z-index: 99; max-height: 30vh; overflow: auto; margin: 0; padding: .5rem 1rem; background: #111; color: #9ef09e; font: 12px/1.5 monospace; direction: ltr; }
+    .component-card { min-height: 60px; position: relative; }
+    .components-grid { overflow: hidden; }
+    .s-block--fast-checkout { margin: 2rem auto; max-width: 40rem; padding: 1.5rem; border: 2px dashed #999; border-radius: 1rem; text-align: center; }
+    .harness-filler { min-height: 120vh; display: grid; place-items: center; color: #999; border-block: 1px dashed #ccc; }
+  </style>
+  <script>
+    // ?lang=en switches the page before Twilight reads it
+    const lang = new URLSearchParams(location.search).get("lang");
+    if (lang === "en") { document.documentElement.lang = "en"; document.documentElement.dir = "ltr"; }
+  </script>
+</head>
+<body>
+  <i class="sicon-star2" aria-hidden="true" style="position:absolute;opacity:0;pointer-events:none"></i>
+  <main id="page" class="flex flex-col min-h-screen"></main>
+  <pre id="harness-log"></pre>
+  <script type="module" src="https://cdn.salla.network/js/twilight/latest/twilight.esm.js"></script>
+  <script type="module">
+    const params = new URLSearchParams(location.search);
+    const template = params.get("template") || "dev";
+    const mode = params.get("mode") || "product";
+    const layout = params.get("layout") || "inline-block";
+    // Your abaya's preview store and one of its perfumes
+    const storeId = params.get("store") || "1616473";
+    const productId = params.get("product") || "45289979";
+    const logEl = document.getElementById("harness-log");
+    if (params.get("clean")) logEl.style.display = "none";
+    const log = (...args) => { logEl.textContent += args.map((a) => typeof a === "string" ? a : JSON.stringify(a)).join(" ") + "\n"; console.log("[harness]", ...args); };
+    window.harnessLog = [];
+    window.addEventListener("open-checkout-drawer", () => { window.harnessLog.push("open-checkout-drawer"); log("event: open-checkout-drawer"); });
+
+    const waitFor = (test) => new Promise((resolve) => { const t = setInterval(() => { if (test()) { clearInterval(t); resolve(); } }, 50); });
+    await waitFor(() => window.Salla);
+    // A real landing page runs Salla in the page's language; the API picks content by Accept-Language
+    const pageLang = params.get("lang") === "en" ? "en" : "ar";
+    const settings = (await fetch("https://api.salla.dev/store/v1/store/settings", { headers: { "store-identifier": storeId, "accept-language": pageLang } }).then((r) => r.json())).data;
+    // The preview store may be in maintenance; its banner is not part of a landing page
+    Salla.init({ ...settings, maintenance: false, debug: false });
+    await Salla.onReady();
+    Salla.api?.setHeader?.("Accept-Language", pageLang);
+    Salla.config.set("user.language_code", pageLang);
+    Salla.lang?.setLocale?.(pageLang);
+    if (params.get("landing") !== "0") Salla.config.set("page.is_landing_page", true);
+    Salla.config.set("theme.settings", {
+      page_status: "active",
+      page_for_product: [{ value: mode }],
+      product: { value: mode === "product" ? [productId] : [] },
+      main_btn_text: "تسوق العروض",
+      main_btn_url: params.get("mainurl") ?? "https://demostore.salla.sa/dev-uxwu2jwznmctegaw/",
+    });
+    const { primary, reverse_text } = Salla.config.get("theme.color") || {};
+    document.documentElement.style.setProperty("--color-primary", params.get("primary") || primary);
+    document.documentElement.style.setProperty("--color-primary-reverse", params.get("primary_reverse") || reverse_text);
+    log(`store ${storeId} | mode ${mode} | layout ${layout} | template ${template}`);
+
+    // ?template=dev renders every component in the manifest with its default values
+    let components;
+    if (template === "dev") {
+      components = (await fetch("/twilight-bundle.json").then((r) => r.json())).components;
+    } else {
+      components = (await fetch(template.endsWith(".json") ? template : `/templates/${template}.json`).then((r) => r.json())).components;
+    }
+    if (params.get("noheader")) components = components.filter((c) => c.name !== "page-header");
+    // Without ?product the page sells the template own abaya, as the merchant would set it
+    const heroProduct = components.find((c) => c.name === "hero")?.fields.find((f) => f.id === "product")?.value?.[0]?.value;
+    if (!params.get("product") && heroProduct && mode === "product") {
+      Salla.config.set("theme.settings", { ...Salla.config.get("theme.settings"), product: { value: [String(heroProduct)] } });
+    }
+
+    // ?pagemode=light|dark starts the page as if the shopper had used the header's switch
+    const header = components.find((c) => c.name === "page-header");
+    const base = header?.fields.find((f) => f.id === "default_mode")?.value?.[0]?.value || "light";
+    if (params.get("pagemode")) localStorage.setItem("aby-mode", JSON.stringify({ mode: params.get("pagemode"), base }));
+    else localStorage.removeItem("aby-mode");
+
+    const page = document.getElementById("page");
+    const only = params.get("only")?.split(",");
+    const add = (el) => {
+      if (params.get("cards")) {
+        page.classList.add("components-grid");
+        const card = document.createElement("div");
+        card.className = "component-card";
+        card.appendChild(el);
+        page.appendChild(card);
+      } else page.appendChild(el);
+    };
+    for (const component of components.filter((c) => !only || only.includes(c.name))) {
+      const values = Object.fromEntries((component.fields || []).filter((f) => f.type !== "static").map((f) => [f.id, f.value]));
+      if (params.get("scheme") && "color_scheme" in values) values.color_scheme = [{ value: params.get("scheme") }];
+      // ?palette=<hex> sets the header brand color; ?<field>=<value> on fields prefixed f_ overrides any field
+      if (component.name === "page-header" && params.has("palette")) values.brand_color = params.get("palette");
+      for (const [key, value] of params) if (key.startsWith("f_") && key.slice(2) in values) values[key.slice(2)] = value;
+      // ?c.<component>.<field>=<value> overrides a field on one component only
+      for (const [key, value] of params) {
+        const [prefix, name, field] = key.split(".");
+        if (prefix === "c" && name === component.name && field in values) values[field] = value;
+      }
+      const wrapper = { component: values, key: component.key, path: "bundle-component", component_name: component.name, bundle_id: "your-abaya-local" };
+      const el = document.createElement("salla-custom-component");
+      el.setAttribute("component-name", component.name);
+      el.setAttribute("bundle-id", "your-abaya-local");
+      el.setAttribute("assets", `/dist/${component.name}.js`);
+      el.setAttribute("config", JSON.stringify(wrapper));
+      // Page length to scroll through before the footer, so sticky parts can be checked
+      if (component.name === "page-footer" && params.get("filler") !== "0") {
+        const filler = document.createElement("div");
+        filler.className = "harness-filler";
+        filler.textContent = "filler";
+        add(filler);
+      }
+      add(el);
+    }
+
+    if (mode === "product" && layout !== "none") {
+      const checkout = document.createElement("div");
+      checkout.className = "s-block s-block--fast-checkout";
+      checkout.dataset.layout = layout;
+      checkout.innerHTML = '<p>fast-checkout</p><salla-quantity-input value="1"></salla-quantity-input>';
+      // The real page puts the checkout after the sections; the footer still closes the page
+      const footer = [...page.children].find((el) => el.getAttribute?.("component-name") === "page-footer" || el.querySelector?.('[component-name="page-footer"]'));
+      footer ? page.insertBefore(checkout, footer) : page.appendChild(checkout);
+      checkout.querySelector("salla-quantity-input").addEventListener("change", (e) => {
+        window.harnessLog.push(`quantity:${e.detail ?? e.target.value}`);
+        log(`fast-checkout quantity changed to ${e.detail ?? e.target.value}`);
+      });
+    }
+
+    // The cart is stubbed so checks never touch a real store cart; ?realcart=1 keeps it
+    if (!params.get("realcart") && Salla.cart?.api) {
+      Salla.cart.api.addItem = async (item) => { window.harnessLog.push("addItem:" + JSON.stringify(item)); log("cart addItem", item); return { data: {} }; };
+      Salla.cart.api.submit = async () => { window.harnessLog.push("submit"); log("cart submit"); return {}; };
+    }
+
+    const analytics = Salla.analytics;
+    if (analytics) {
+      const track = analytics.track.bind(analytics);
+      analytics.track = (event, props) => { window.harnessLog.push(`track:${event}`); log(`analytics: ${event}`, props); return track(event, props); };
+    }
+
+    const core = document.createElement("script");
+    core.type = "module";
+    core.src = "https://cdn.assets.salla.network/prod/@salla.sa/twilight-bundles/latest/twilight-bundles.js";
+    document.head.appendChild(core);
+  </script>
+</body>
+</html>
