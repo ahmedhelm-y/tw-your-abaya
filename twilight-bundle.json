@@ -4,11 +4,11 @@
         "en": "Your abaya"
     },
     "description": {
-        "ar": "صفحة هبوط للعبايات تختار فيها العميلة طولها ومقاسها وتشتري",
-        "en": "An abaya landing page where shoppers find their length and size, then buy"
+        "ar": null,
+        "en": null
     },
     "author_email": "ahmedhelmy2722@gmail.com",
-    "support_url": "https://badeehah.com",
+    "support_url": null,
     "repository": "https://github.com/ahmedhelm-y/tw-your-abaya",
     "features": [
         "landing-page-templates"
