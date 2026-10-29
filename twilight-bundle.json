@@ -4865,24 +4865,27 @@
             "path": "templates.daily-black",
             "category_id": "814202285",
             "primary_color": "",
-            "thumbnail": "templates-thumbs/daily-black.jpg",
-            "is_default": true
+            "thumbnail": "https://cdn.assets.salla.network/previews/u1q8bhtsode8/assets/7e5428766b59e4f545477b32c3fb107ee7ff443752c65d0e5f723ef37a5c4358/templates-thumbs/daily-black.jpg",
+            "is_default": true,
+            "public_preview_url": "https://salla.design/preview/s/u1q8bhtsode8/daily-black"
         },
         {
             "id": "a4c8701f-7fa0-4fc5-8558-61ad0e5a80dc",
             "path": "templates.embroidered-occasion",
             "category_id": "814202285",
             "primary_color": "",
-            "thumbnail": "templates-thumbs/embroidered-occasion.jpg",
-            "is_default": false
+            "thumbnail": "https://cdn.assets.salla.network/previews/u1q8bhtsode8/assets/565070b277848930116c484d8d3db3040e0508dff513d99f9865edcf72149d70/templates-thumbs/embroidered-occasion.jpg",
+            "is_default": false,
+            "public_preview_url": "https://salla.design/preview/s/u1q8bhtsode8/embroidered-occasion"
         },
         {
             "id": "3214ec38-7234-4d56-98a8-308d185c9b79",
             "path": "templates.eid-edit",
             "category_id": "814202285",
             "primary_color": "",
-            "thumbnail": "templates-thumbs/eid-edit.jpg",
-            "is_default": false
+            "thumbnail": "https://cdn.assets.salla.network/previews/u1q8bhtsode8/assets/1dc28d9d959b9dafb2b6d6096dfefccffe82a05f44d1f7e90c194b22ecc1527d/templates-thumbs/eid-edit.jpg",
+            "is_default": false,
+            "public_preview_url": "https://salla.design/preview/s/u1q8bhtsode8/eid-edit"
         }
     ]
 }
