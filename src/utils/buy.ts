@@ -109,6 +109,68 @@ function errorMessage(error: any): string {
   );
 }
 
+/** The store's own cart page: it holds the same cart and handles login and checkout itself. */
+export function cartPageUrl(): string {
+  const Salla = getSalla() as any;
+  try {
+    const url = Salla?.url?.get?.("cart");
+    if (url) return String(url);
+  } catch {
+    // fall through to the store address
+  }
+  const store = String(Salla?.config?.get("store.url") || location.origin).replace(/\/+$/, "");
+  return `${store}/cart`;
+}
+
+/** How long a submit may take to start checkout or open login before the cart page takes over. */
+export const checkoutTiming = { ms: 6000 };
+
+/**
+ * Sends the cart to checkout with Salla's submit, which goes to payment, or opens Salla's login for a guest
+ * when the store has no guest checkout. If it fails, or nothing happens within a few seconds (no page change
+ * and no login window), the shopper goes to the store's cart page, which carries the same cart.
+ * Resolves false only when not even that is possible.
+ */
+export async function checkout(): Promise<boolean> {
+  const Salla = getSalla() as any;
+  const cart = Salla?.cart?.api;
+  const fallback = () => {
+    nav.go(cartPageUrl());
+    return true;
+  };
+  if (!cart?.submit) return fallback();
+  let handled = false;
+  // A login request counts only when the page has Salla's login window to show it
+  const onLogin = () => (handled = Boolean(document.querySelector("salla-login-modal")));
+  const onLeave = () => (handled = true);
+  const start = location.href;
+  const leaving = () => location.href !== start;
+  try {
+    Salla?.event?.on?.("login::open", onLogin);
+  } catch {
+    // no event bus: the timer alone decides
+  }
+  window.addEventListener("pagehide", onLeave, { once: true });
+  window.addEventListener("beforeunload", onLeave, { once: true });
+  const timer = new Promise<"wait">((resolve) => window.setTimeout(() => resolve("wait"), checkoutTiming.ms));
+  try {
+    const submitted = Promise.resolve(cart.submit()).then(() => "ok" as const);
+    await Promise.race([submitted, timer]);
+    // Submit resolves right after it starts the move to checkout or opens login; give either a moment to show
+    if (!handled) await timer;
+    if (!handled && !leaving()) return fallback();
+    return true;
+  } catch {
+    return handled ? true : fallback();
+  } finally {
+    try {
+      Salla?.event?.off?.("login::open", onLogin);
+    } catch {
+      // ignore
+    }
+  }
+}
+
 async function run(req: BuyRequest): Promise<BuyResult> {
   const kind = buyAction(req);
   const quantity = Math.max(1, Number(req.quantity) || 1);
@@ -149,12 +211,8 @@ async function run(req: BuyRequest): Promise<BuyResult> {
       await rollback(cart, before, after);
       return { kind: "error", message: errorMessage(error) };
     }
-    try {
-      await cart.submit();
-      return { kind };
-    } catch (error) {
-      return { kind: "error", message: errorMessage(error) };
-    }
+    const done = await checkout();
+    return done ? { kind } : { kind: "error", message: errorMessage(null) };
   }
 
   if (kind === "link") {

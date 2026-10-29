@@ -1,6 +1,6 @@
 import { nothing as r, html as e } from "lit";
 import { g as c, r as n, i as p, t as d, u as m } from "./styles-vAeqvApy.js";
-import { A as g } from "./section-DUIqt8g_.js";
+import { A as g } from "./section-Cbwxq9g0.js";
 const b = `
 .aby-ts__badges { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: .75rem; }
 .aby-ts__badge { display: flex; align-items: center; gap: .75rem; padding: .875rem 1rem; border-radius: 1rem; background: var(--aby-card); }

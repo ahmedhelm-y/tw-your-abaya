@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { buy, buyAction, nav } from "../src/utils/buy";
+import { buy, buyAction, nav, cartPageUrl, checkout, checkoutTiming } from "../src/utils/buy";
 
 type Settings = Record<string, any>;
 
@@ -28,6 +28,8 @@ let events: string[] = [];
 const onDrawer = () => events.push("open-checkout-drawer");
 
 beforeEach(() => {
+  checkoutTiming.ms = 5;
+  vi.spyOn(nav, "go").mockImplementation(() => {});
   // A page shown again (back button) starts with no purchase in progress
   window.dispatchEvent(new Event("pageshow"));
   events = [];
@@ -192,5 +194,52 @@ describe("buy", () => {
     const salla = setupSalla({ settings: productPage() });
     await buy({ quantity: 1 });
     expect(salla.analytics.track).toHaveBeenCalledWith("Buy Now", expect.objectContaining({ source: "your-abaya", quantity: 1 }));
+  });
+});
+
+describe("checkout", () => {
+  const withCart = (submit: () => unknown, extra: Record<string, unknown> = {}) => {
+    const listeners: Record<string, (() => void)[]> = {};
+    (window as any).Salla = {
+      config: { get: (key: string) => (key === "store.url" ? "https://shop.sa/" : undefined) },
+      cart: { api: { submit: vi.fn(submit) } },
+      event: { on: (name: string, fn: () => void) => (listeners[name] ||= []).push(fn), off: () => {} },
+      ...extra,
+    };
+    return listeners;
+  };
+
+  it("goes to the store's cart page when submit does nothing", async () => {
+    withCart(async () => {});
+    const go = vi.spyOn(nav, "go").mockImplementation(() => {});
+    expect(await checkout()).toBe(true);
+    expect(go).toHaveBeenCalledWith("https://shop.sa/cart");
+  });
+
+  it("goes to the cart page when submit fails", async () => {
+    withCart(async () => { throw new Error("boom"); });
+    const go = vi.spyOn(nav, "go").mockImplementation(() => {});
+    await checkout();
+    expect(go).toHaveBeenCalledWith("https://shop.sa/cart");
+  });
+
+  it("stays when Salla opens its login window on the page", async () => {
+    document.body.innerHTML = "<salla-login-modal></salla-login-modal>";
+    const listeners = withCart(async () => listeners["login::open"]?.forEach((fn) => fn()));
+    const go = vi.spyOn(nav, "go").mockImplementation(() => {});
+    await checkout();
+    expect(go).not.toHaveBeenCalled();
+  });
+
+  it("still falls back when login is asked for but the page has no login window", async () => {
+    const listeners = withCart(async () => listeners["login::open"]?.forEach((fn) => fn()));
+    const go = vi.spyOn(nav, "go").mockImplementation(() => {});
+    await checkout();
+    expect(go).toHaveBeenCalledWith("https://shop.sa/cart");
+  });
+
+  it("prefers Salla's own cart address", () => {
+    withCart(async () => {}, { url: { get: () => "https://shop.sa/ar/cart" } });
+    expect(cartPageUrl()).toBe("https://shop.sa/ar/cart");
   });
 });

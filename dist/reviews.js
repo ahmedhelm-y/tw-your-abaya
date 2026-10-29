@@ -2,7 +2,7 @@ import { html as s, nothing as o } from "lit";
 import { state as v } from "lit/decorators.js";
 import { g as k, r as h, t as d } from "./styles-vAeqvApy.js";
 import { e as S, h as M } from "./fit-Cpxi4Lua.js";
-import { A as q } from "./section-DUIqt8g_.js";
+import { A as q } from "./section-Cbwxq9g0.js";
 const f = 0.2;
 function z(l) {
   const e = l.map(Number).filter((a) => Number.isInteger(a) && a >= 1 && a <= 5), t = [5, 4, 3, 2, 1].map((a) => e.filter((i) => i === a).length);

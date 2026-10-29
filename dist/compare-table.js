@@ -1,6 +1,6 @@
 import { html as e, nothing as n } from "lit";
 import { g as d, r as t, i as m, t as s } from "./styles-vAeqvApy.js";
-import { A as b } from "./section-DUIqt8g_.js";
+import { A as b } from "./section-Cbwxq9g0.js";
 const p = `
 .aby-ct__table { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-radius: 1.25rem; overflow: hidden; background: var(--aby-card); }
 .aby-ct__head { padding: 1rem 1.125rem; font-weight: 800; font-size: 1.0625rem; color: var(--aby-title); border-bottom: 2px solid color-mix(in srgb, var(--aby-text) 12%, transparent); }
