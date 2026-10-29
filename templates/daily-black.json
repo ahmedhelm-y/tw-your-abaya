@@ -19,7 +19,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "اتركه فارغاً لاستخدام شعار متجرك",
-          "value": ""
+          "value": "https://raw.githubusercontent.com/ahmedhelm-y/tw-your-abaya/store-assets/logo/logo.png"
         },
         {
           "id": "logo_dark",
@@ -29,7 +29,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "يظهر في الوضع الداكن وفوق الصور في الرأس الشفاف، وبدونه يظهر شعارك باللون الأبيض",
-          "value": ""
+          "value": "https://raw.githubusercontent.com/ahmedhelm-y/tw-your-abaya/store-assets/logo/logo-dark.png"
         },
         {
           "id": "logo_height",

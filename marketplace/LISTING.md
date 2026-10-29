@@ -38,6 +38,9 @@ Every text is in Arabic and English, and every section works on phones.
 
 ## الصور (بالترتيب ده، 1600×1200، أقل من 200KB)
 
+الصور والأيقونة في branch `store-assets` جوه `marketplace/`، عشان حجم الباندل يفضل أقل من 1 MB:
+https://github.com/ahmedhelm-y/tw-your-abaya/tree/store-assets/marketplace
+
 | الملف | العنوان AR | Title EN | الوصف AR | Description EN |
 |---|---|---|---|---|
 | `01-daily-hero.jpg` | صفحة هبوط لعبايتك | A landing page for your abaya | صفحة كاملة تبيع عبايتك بطولها ومقاسها | A full page that sells your abaya in the right length and size |
@@ -47,7 +50,7 @@ Every text is in Arabic and English, and every section works on phones.
 | `05-reviews-fit.jpg` | آراء بالطول والمقاس | Reviews with height and size | مؤشر المقاس وفلتر الآراء حسب الطول | A fit meter and reviews filtered by height |
 | `06-look-and-delivery.jpg` | أكملي اللوك وهتوصلك امتى | Complete the look, see the date | الطرحة والفستان بضغطة، وعداد الطلب | Sheila and under-dress in one tap, and an order countdown |
 
-**الأيقونة:** `marketplace/icon.png` (1024×1024).
+**الأيقونة:** `icon.png` (1024×1024) في نفس الفولدر.
 
 ## بيانات الدعم
 | الخانة | القيمة |

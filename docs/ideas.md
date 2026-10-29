@@ -1,6 +1,6 @@
 # عبايتك: الأفكار اللي اتوافق عليها
 
-التاريخ: 2026-10-27. الأفكار جاية من متاجر عبايات وفساتين على Shopify، والـ screenshots في `docs/research/`.
+التاريخ: 2026-10-27. الأفكار جاية من متاجر عبايات وفساتين على Shopify، والـ screenshots في branch `store-assets` جوه `research/`.
 صفحة الأفكار كاملة بالصور: https://claude.ai/artifact/VbWWz4XV9vRkTSgxDoh91c
 
 الباندل هيتبني على نفس أساس «عطرك» (`ahmedhelm-y/tw-your-perfume`، شوف `docs/ARCHITECTURE.md` هناك).

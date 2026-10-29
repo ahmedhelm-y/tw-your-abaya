@@ -50,7 +50,13 @@ node scripts/serve.mjs 5191
 
 - **الـ harness:** نفس parameters «عطرك» (`mode`، و`pagemode`، و`lang`، و`only`، و`c.<قسم>.<حقل>`). `palette=%23hex` بيغيّر لون البراند.
 - **السكشنز والقوالب:** بعد ما تعدّل في `scripts/build-manifest.mjs` أو `scripts/lib/templates.mjs`، شغّل `node scripts/build-manifest.mjs`.
-- **الصور:** `node scripts/capture.mjs` بيطلّع صور القوالب وصور متجر الثيمات. محتاج Chrome في `CHROME=`.
+- **الصور:** `node scripts/capture.mjs` بيطلّع صور القوالب وصور متجر الثيمات. محتاج Chrome في `CHROME=`. ارفع الناتج على `store-assets` مش `main`.
+
+## حجم الباندل
+
+سلة بتضغط الريبو كله، والحد 1 MB. عشان كده الصور اللي مش بتشتغل عند التاجر (صور متجر الثيمات، والأيقونة، واللوجو، والصور المصغرة،
+والمراجع) موجودة في branch `store-assets` بس. `templates-thumbs/` وصور `marketplace/` متجاهلين في `.gitignore`.
+اتأكد بعد أي تعديل: `git archive --format=zip HEAD | wc -c` لازم يفضل أقل من 1000000.
 
 ## قبل النشر
 

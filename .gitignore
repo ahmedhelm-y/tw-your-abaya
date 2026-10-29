@@ -14,3 +14,8 @@ CLAUDE.md
 
 # Plan workspaces
 .superpowers/
+
+# Generated images live on the store-assets branch
+templates-thumbs/
+marketplace/*.jpg
+marketplace/*.png

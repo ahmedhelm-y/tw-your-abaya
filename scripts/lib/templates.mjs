@@ -2,6 +2,9 @@
 // the texts are written for this bundle.
 import { L, opt } from "./fields.mjs";
 
+// Sample logo for the template previews; the merchant swaps it for their own, or clears it to use the store logo
+const LOGO = "https://raw.githubusercontent.com/ahmedhelm-y/tw-your-abaya/store-assets/logo/";
+const logo = { logo: `${LOGO}logo.png`, logo_dark: `${LOGO}logo-dark.png` };
 const sel = (value, label) => [opt(value, label)];
 const product = (id, name) => [{ label: name, value: id, key: String(id) }];
 const rows = (prefix, list) => list.map((row) => Object.fromEntries(Object.entries(row).map(([k, v]) => [`${prefix}.${k}`, v])));
@@ -58,7 +61,7 @@ export const templates = [
     is_default: true,
     order: ORDER,
     values: {
-      "page-header": { brand_color: "#3d3833", default_mode: sel("light", "فاتح"), sticky: true,
+      "page-header": { ...logo, brand_color: "#3d3833", default_mode: sel("light", "فاتح"), sticky: true,
         nav: rows("nav", [{ label: L("المقاس", "Fit"), target: "fit" }, { label: L("الآراء", "Reviews"), target: "reviews" }, { label: L("التوصيل", "Delivery"), target: "delivery" }]) },
       hero: { layout: sel("split", "النص بجانب الصورة"), badge: L("الأكثر طلباً", "Most ordered"),
         title: L("عباية كل يوم", "The everyday abaya"), subtitle: L("سوداء بقصّة مريحة وطبقات ناعمة، تمشي معك من الدوام للمشوار", "Black, easy cut and soft tiers, from work to errands"),
@@ -88,7 +91,7 @@ export const templates = [
     is_default: false,
     order: ORDER,
     values: {
-      "page-header": { brand_color: "#5e7356", default_mode: sel("light", "فاتح"), sticky: true,
+      "page-header": { ...logo, brand_color: "#5e7356", default_mode: sel("light", "فاتح"), sticky: true,
         nav: rows("nav", [{ label: L("المقاس", "Fit"), target: "fit" }, { label: L("التفصيل", "Tailoring"), target: "tailor" }, { label: L("الآراء", "Reviews"), target: "reviews" }]) },
       hero: { layout: sel("split", "النص بجانب الصورة"), badge: L("إصدار المناسبات", "Occasion edition"),
         title: L("تطريز يحكي ذوقك", "Embroidery that speaks your taste"), subtitle: L("أكمام مطرّزة يدوياً على قماش منسدل، لعزايم العيد والزواجات", "Hand-embroidered sleeves on a flowing fabric, for Eid gatherings and weddings"),
@@ -125,7 +128,7 @@ export const templates = [
     order: ["page-header", "hero", "occasion-edit", "delivery-eta", "trust-strip", "fit-finder", "complete-look", "reviews", "compare-table",
       "custom-fit", "scratch-coupon", "page-footer", "sticky-buy"],
     values: {
-      "page-header": { brand_color: "#9b7b4a", default_mode: sel("light", "فاتح"), sticky: true,
+      "page-header": { ...logo, brand_color: "#9b7b4a", default_mode: sel("light", "فاتح"), sticky: true,
         nav: rows("nav", [{ label: L("التشكيلة", "The edit"), target: "edit" }, { label: L("التوصيل", "Delivery"), target: "delivery" }, { label: L("الآراء", "Reviews"), target: "reviews" }]) },
       hero: { layout: sel("split", "النص بجانب الصورة"), badge: L("تشكيلة العيد", "The Eid edit"),
         title: L("عيدك بعباية جديدة", "A new abaya for your Eid"), subtitle: L("ألوان فاتحة وكسرات ناعمة، وتوصلك قبل العيد", "Light colors and soft pleats, delivered before Eid"),
