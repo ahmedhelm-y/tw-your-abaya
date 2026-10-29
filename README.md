@@ -56,6 +56,8 @@ node scripts/serve.mjs 5191
 
 سلة بتضغط الريبو كله، والحد 1 MB. عشان كده الصور اللي مش بتشتغل عند التاجر (صور متجر الثيمات، والأيقونة، واللوجو، والصور المصغرة،
 والمراجع) موجودة في branch `store-assets` بس. `templates-thumbs/` وصور `marketplace/` متجاهلين في `.gitignore`.
+**قبل `tw-preview` لازم الصور المصغرة تبقى موجودة محلياً:** الأداة بتمسح من سلة أي صورة مش لاقياها في الفولدر.
+هاتها الأول بـ `git checkout store-assets -- templates-thumbs && git restore --staged templates-thumbs`.
 اتأكد بعد أي تعديل: `git archive --format=zip HEAD | wc -c` لازم يفضل أقل من 1000000.
 
 ## قبل النشر
