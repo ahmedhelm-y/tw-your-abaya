@@ -33,8 +33,8 @@ const chain = (prefix: "l" | "d") =>
 export const baseCss = `
 .aby-host { display: block; width: 100%; min-width: 0; container-type: inline-size; }
 [data-aby-section] { scroll-margin-top: var(--aby-hd-h, 0px); }
-/* The last block keeps clear of the sticky buy bar while it shows */
-.aby-ft { padding-bottom: calc(1.25rem + var(--aby-sb-h, 0px)) !important; }
+/* The page's end keeps clear of the sticky buy bar while it shows */
+.aby-host:has(> .aby-sb:not(.aby-sb--inline)) { height: var(--aby-sb-h, 0px); }
 .component-card:has(> .aby-host:not(:empty)) { min-height: 0; }
 .aby-block { ${chain("l")}
   display: block; width: 100%; box-sizing: border-box; font-family: var(--font-main, inherit);
@@ -60,6 +60,8 @@ html.aby-mode-ready .aby-block { transition: background-color .3s ease, color .3
 .aby-btn:hover { transform: translateY(-1px); opacity: .92; }
 .aby-btn:focus-visible { outline: 2px solid var(--aby-accent-ink); outline-offset: 3px; }
 .aby-btn[disabled], .aby-btn[aria-busy="true"] { opacity: .6; cursor: progress; transform: none; }
+.aby-cta { display: flex; justify-content: center; margin-top: 2rem; }
+.aby-cta .aby-btn { min-width: min(100%, 16rem); }
 .aby-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .aby-error { margin-top: .5rem; color: #b42318; font-size: .875rem; }
 .aby-block.aby-dark .aby-error, html.aby-mode-dark .aby-auto .aby-error { color: #fda29b; }

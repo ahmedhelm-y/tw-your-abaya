@@ -1,6 +1,6 @@
-import { nothing as r, html as e } from "lit";
-import { g as c, r as n, i as p, t as d, u as m } from "./styles-vAeqvApy.js";
-import { A as g } from "./section-Cbwxq9g0.js";
+import { nothing as a, html as e } from "lit";
+import { g as c, r as o, i as d, t as p, u as m } from "./styles-C5ta92Qj.js";
+import { A as g } from "./section-DksPXwqH.js";
 const b = `
 .aby-ts__badges { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: .75rem; }
 .aby-ts__badge { display: flex; align-items: center; gap: .75rem; padding: .875rem 1rem; border-radius: 1rem; background: var(--aby-card); }
@@ -26,15 +26,16 @@ class l extends g {
     return b;
   }
   render() {
-    const s = this.cfg(), i = c(s.badges, "badges").map((t) => ({ icon: String(t.icon || "sicon-check"), text: n(t.text) })).filter((t) => t.text), a = c(s.steps, "steps").map((t) => ({ title: n(t.title), text: n(t.text), image: String(t.image || "") })).filter((t) => t.title);
-    if (!i.length && !a.length)
-      return p() ? r : this.frame(e`<p class="aby-ts__empty">${d({ ar: "أضف المميزات أو خطوات الصناعة من إعدادات هذا القسم", en: "Add badges or steps in this section's settings" })}</p>`);
-    const o = m(s.layout) === "compact" && !a.length;
+    const s = this.cfg(), i = c(s.badges, "badges").map((t) => ({ icon: String(t.icon || "sicon-check"), text: o(t.text) })).filter((t) => t.text), r = c(s.steps, "steps").map((t) => ({ title: o(t.title), text: o(t.text), image: String(t.image || "") })).filter((t) => t.title);
+    if (!i.length && !r.length)
+      return d() ? a : this.frame(e`<p class="aby-ts__empty">${p({ ar: "أضف المميزات أو خطوات الصناعة من إعدادات هذا القسم", en: "Add badges or steps in this section's settings" })}</p>`);
+    const n = m(s.layout) === "compact" && !r.length;
     return this.frame(e`
-      ${i.length ? e`<div class="aby-ts__badges">${i.map((t) => e`<div class="aby-ts__badge"><i class=${t.icon} aria-hidden="true"></i><span>${t.text}</span></div>`)}</div>` : r}
-      ${a.length ? e`<ol class="aby-ts__steps" style=${`--aby-ts-cols:${Math.min(a.length, 4)}`}>${a.map((t) => e`<li class="aby-ts__step">
-            ${t.image ? e`<img src=${t.image} alt="" loading="lazy" />` : r}
-            <h3>${t.title}</h3>${t.text ? e`<p>${t.text}</p>` : r}</li>`)}</ol>` : r}`, { extraClass: `aby-ts${o ? " aby-ts--compact" : ""}`, title: !o });
+      ${i.length ? e`<div class="aby-ts__badges">${i.map((t) => e`<div class="aby-ts__badge"><i class=${t.icon} aria-hidden="true"></i><span>${t.text}</span></div>`)}</div>` : a}
+      ${r.length ? e`<ol class="aby-ts__steps" style=${`--aby-ts-cols:${Math.min(r.length, 4)}`}>${r.map((t) => e`<li class="aby-ts__step">
+            ${t.image ? e`<img src=${t.image} alt="" loading="lazy" />` : a}
+            <h3>${t.title}</h3>${t.text ? e`<p>${t.text}</p>` : a}</li>`)}</ol>` : a}
+      ${n ? a : this.renderCta()}`, { extraClass: `aby-ts${n ? " aby-ts--compact" : ""}`, title: !n });
   }
 }
 typeof l < "u" && l.registerSallaComponent("salla-trust-strip");

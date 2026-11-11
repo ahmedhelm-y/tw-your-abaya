@@ -1,15 +1,28 @@
-import { nothing as n, html as i } from "lit";
-import { state as g } from "lit/decorators.js";
-import { unsafeHTML as _ } from "lit/directives/unsafe-html.js";
-import { b as v } from "./buy-D6n2j5jF.js";
-import { f as x, u as m, m as u, r as p } from "./styles-vAeqvApy.js";
-import { A as w, p as $ } from "./section-Cbwxq9g0.js";
-var k = Object.defineProperty, f = (b, e, a, t) => {
-  for (var r = void 0, o = b.length - 1, s; o >= 0; o--)
-    (s = b[o]) && (r = s(e, a, r) || r);
-  return r && k(e, a, r), r;
+import { nothing as l, html as n } from "lit";
+import { state as v } from "lit/decorators.js";
+import { unsafeHTML as g } from "lit/directives/unsafe-html.js";
+import { p as w, u as b, c as $, f as k, m as f, r as u, b as M } from "./styles-C5ta92Qj.js";
+import { A as P, p as C } from "./section-DksPXwqH.js";
+let _ = "", m = [];
+function z(s) {
+  const e = w(s), a = String(b(s.default_mode) || "light"), r = `${JSON.stringify(e)}|${a}`, t = document.documentElement, o = $(a);
+  if (r === _) return o;
+  _ = r;
+  for (const i of m) t.style.removeProperty(i);
+  for (const [i, c] of Object.entries(e)) t.style.setProperty(i, c);
+  return m = Object.keys(e), t.classList.toggle("aby-mode-dark", o === "dark"), t.classList.toggle("aby-mode-light", o === "light"), o;
+}
+function L() {
+  const s = document.documentElement;
+  for (const e of m) s.style.removeProperty(e);
+  m = [], _ = "", s.classList.remove("aby-mode-dark", "aby-mode-light");
+}
+var S = Object.defineProperty, x = (s, e, a, r) => {
+  for (var t = void 0, o = s.length - 1, i; o >= 0; o--)
+    (i = s[o]) && (t = i(e, a, t) || t);
+  return t && S(e, a, t), t;
 };
-const M = `
+const j = `
 .aby-hero { position: relative; padding: 0; overflow: hidden; }
 .aby-hero > .aby-container { max-width: none; padding: 0; }
 .aby-hero__media { position: relative; overflow: hidden; background: var(--aby-card); }
@@ -41,71 +54,76 @@ const M = `
 @container (min-width: 768px) { .aby-hero--split .aby-hero__wrap { grid-template-columns: 1fr 1fr; gap: 3.5rem; padding-block: 4rem; } }
 @container (max-width: 767px) { .aby-hero--split .aby-hero__media { order: -1; aspect-ratio: 1 / 1; } }
 `;
-class d extends w {
+class y extends P {
   constructor() {
     super(...arguments), this.styleId = "hero", this.product = null, this.mobile = !1, this.onMedia = (e) => {
       this.mobile = e.matches;
     };
   }
   styles() {
-    return M;
+    return j;
   }
   async connectedCallback() {
-    var e, a, t, r;
-    super.connectedCallback(), this.media = (e = window.matchMedia) == null ? void 0 : e.call(window, "(max-width: 767px)"), this.mobile = !!((a = this.media) != null && a.matches), (r = (t = this.media) == null ? void 0 : t.addEventListener) == null || r.call(t, "change", this.onMedia), this.product = await x($(this.cfg()));
+    var e, a, r, t;
+    super.connectedCallback(), this.media = (e = window.matchMedia) == null ? void 0 : e.call(window, "(max-width: 767px)"), this.mobile = !!((a = this.media) != null && a.matches), (t = (r = this.media) == null ? void 0 : r.addEventListener) == null || t.call(r, "change", this.onMedia), this.product = await k(C(this.cfg()));
   }
   disconnectedCallback() {
     var e, a;
-    super.disconnectedCallback(), (a = (e = this.media) == null ? void 0 : e.removeEventListener) == null || a.call(e, "change", this.onMedia);
+    super.disconnectedCallback(), (a = (e = this.media) == null ? void 0 : e.removeEventListener) == null || a.call(e, "change", this.onMedia), L();
+  }
+  // The brand color and page mode are page-wide; the hero's own colors stay on the hero
+  willUpdate() {
+    const e = this.cfg();
+    z({ brand_color: e.brand_color, default_mode: e.default_mode });
   }
   renderMedia() {
-    var s, h, c;
-    const e = this.cfg(), a = (l, y) => String(this.mobile && e[y] || e[l] || "");
-    if (m(e.media) === "video") {
-      const l = a("video_url", "video_url_mobile");
-      if (l) {
-        const y = (s = window.matchMedia) == null ? void 0 : s.call(window, "(prefers-reduced-motion: reduce)").matches;
-        return i`<video .src=${l} poster=${e.poster || n} ?autoplay=${!y} muted loop playsinline preload="metadata"
+    var i, c, h;
+    const e = this.cfg(), a = (d, p) => String(this.mobile && e[p] || e[d] || "");
+    if (b(e.media) === "video") {
+      const d = a("video_url", "video_url_mobile");
+      if (d) {
+        const p = (i = window.matchMedia) == null ? void 0 : i.call(window, "(prefers-reduced-motion: reduce)").matches;
+        return n`<video .src=${d} poster=${e.poster || l} ?autoplay=${!p} muted loop playsinline preload="metadata"
           aria-hidden="true"></video>`;
       }
     }
-    const t = a("image", "image_mobile"), r = ((c = (h = this.product) == null ? void 0 : h.image) == null ? void 0 : c.url) || "", o = t || r;
-    return o ? i`<img src=${o} alt="" fetchpriority="high" />` : n;
+    const r = a("image", "image_mobile"), t = ((h = (c = this.product) == null ? void 0 : c.image) == null ? void 0 : h.url) || "", o = r || t;
+    return o ? n`<img src=${o} alt="" fetchpriority="high" />` : l;
   }
   renderPrice() {
     const e = this.product;
-    if (!e || this.cfg().show_price === !1) return n;
-    const a = Number(e.is_on_sale ? e.sale_price : e.price) || 0, t = Number(e.regular_price) || 0;
-    return i`<span class="aby-hero__price">${_(u(a))}
-      ${e.is_on_sale && t > a ? i`<s>${_(u(t))}</s>` : n}</span>`;
+    if (!e || this.cfg().show_price === !1) return l;
+    const a = Number(e.is_on_sale ? e.sale_price : e.price) || 0, r = Number(e.regular_price) || 0;
+    return n`<span class="aby-hero__price">${g(f(a))}
+      ${e.is_on_sale && r > a ? n`<s>${g(f(r))}</s>` : l}</span>`;
   }
   render() {
-    const e = this.cfg(), a = m(e.layout) === "split" ? "split" : "overlay", t = m(e.content_align) !== "start", r = Math.min(Math.max(Number(e.overlay ?? 35), 0), 80) / 100, o = Math.min(Math.max(Number(e.height) || 85, 50), 100), s = p(e.badge), h = p(e.title), c = p(e.subtitle), l = v() !== "none";
+    const e = this.cfg(), a = b(e.layout) === "split" ? "split" : "overlay", r = b(e.content_align) !== "start", t = Math.min(Math.max(Number(e.overlay ?? 35), 0), 80) / 100, o = Math.min(Math.max(Number(e.height) || 85, 50), 100), i = u(e.badge), c = u(e.title), h = u(e.subtitle), d = M() !== "none";
     return this.frame(
-      i`<div class="aby-hero__wrap" style=${`--aby-hero-veil:${r};--aby-hero-h:${o}vh`}>
+      n`<div class="aby-hero__wrap" style=${`--aby-hero-veil:${t};--aby-hero-h:${o}vh`}>
         <div class="aby-hero__media">${this.renderMedia()}</div>
         <div class="aby-hero__body">
-          ${s ? i`<span class="aby-hero__badge">${s}</span>` : n}
-          ${h ? i`<h1 class="aby-hero__title">${h}</h1>` : n}
-          ${c ? i`<p class="aby-hero__sub">${c}</p>` : n}
+          ${i ? n`<span class="aby-hero__badge">${i}</span>` : l}
+          ${c ? n`<h1 class="aby-hero__title">${c}</h1>` : l}
+          ${h ? n`<p class="aby-hero__sub">${h}</p>` : l}
           <div class="aby-hero__cta">
-            ${l ? i`<button type="button" class="aby-btn" aria-busy=${this.busy ? "true" : "false"}
-                  @click=${() => this.press({ quantity: 1, product: this.product })}>${this.buyLabel()}</button>` : n}
+            ${d ? n`<button type="button" class="aby-btn" aria-busy=${this.busy ? "true" : "false"}
+                  @click=${() => this.press({ quantity: 1, product: this.product })}>${this.buyLabel()}</button>` : l}
             ${this.renderPrice()}
           </div>
         </div>
       </div>`,
-      { hero: !0, title: !1, extraClass: `aby-hero aby-hero--${a}${t ? " aby-hero--center" : ""}` }
+      { hero: !0, title: !1, extraClass: `aby-hero aby-hero--${a}${r ? " aby-hero--center" : ""}` }
     );
   }
 }
-f([
-  g()
-], d.prototype, "product");
-f([
-  g()
-], d.prototype, "mobile");
-typeof d < "u" && d.registerSallaComponent("salla-hero");
+x([
+  v()
+], y.prototype, "product");
+x([
+  v()
+], y.prototype, "mobile");
+typeof y < "u" && y.registerSallaComponent("salla-hero");
 export {
-  d as default
+  y as default
 };

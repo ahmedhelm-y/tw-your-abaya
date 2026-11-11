@@ -1,10 +1,9 @@
 import { nothing as c, html as l } from "lit";
 import { state as h } from "lit/decorators.js";
 import { unsafeHTML as N } from "lit/directives/unsafe-html.js";
-import { b as S } from "./buy-D6n2j5jF.js";
-import { f as C, g as A, l as I, a as x, t as o, r as u, i as L, m as O } from "./styles-vAeqvApy.js";
+import { f as S, g as C, l as A, a as x, t as o, r as u, i as I, b as L, m as O } from "./styles-C5ta92Qj.js";
 import { r as P, f as y, a as k, b as F, o as w, l as T, c as j, d as B } from "./fit-Cpxi4Lua.js";
-import { A as M, p as q } from "./section-Cbwxq9g0.js";
+import { A as M, p as q } from "./section-DksPXwqH.js";
 var Y = Object.defineProperty, f = (g, t, e, a) => {
   for (var i = void 0, r = g.length - 1, n; r >= 0; r--)
     (n = g[r]) && (i = n(t, e, i) || i);
@@ -70,10 +69,10 @@ class d extends M {
     return H;
   }
   async connectedCallback() {
-    super.connectedCallback(), this.product = await C(q(this.cfg())), this.loaded = !0;
+    super.connectedCallback(), this.product = await S(q(this.cfg())), this.loaded = !0;
   }
   rows() {
-    return A(this.cfg().lengths, "lengths").filter((t) => String(t.length ?? "").trim());
+    return C(this.cfg().lengths, "lengths").filter((t) => String(t.length ?? "").trim());
   }
   advice(t) {
     return P(Number(this.height), t, this.heels);
@@ -99,7 +98,7 @@ class d extends M {
     var r;
     const t = {};
     for (const { kind: n, option: s } of this.options()) this.chosen[n] && (t[String(s.id)] = this.chosen[n]);
-    const e = q(this.cfg()), a = !!I(), i = Object.keys(t).length > 0;
+    const e = q(this.cfg()), a = !!A(), i = Object.keys(t).length > 0;
     return a || !e ? { quantity: this.quantity, ...i ? { options: t } : {}, product: this.product } : { items: [{ id: e, quantity: this.quantity, options: i ? t : void 0, max: Number((r = this.product) == null ? void 0 : r.max_quantity) || void 0 }], product: this.product };
   }
   async onBuy() {
@@ -178,8 +177,8 @@ class d extends M {
     var _, v, $;
     const t = this.rows();
     if (!this.product)
-      return !this.loaded || L() ? c : this.frame(l`<p class="aby-ff__empty">${o({ ar: "اختر العباية من إعدادات هذا القسم", en: "Pick the abaya in this section's settings" })}</p>`);
-    const e = y(this.product, "length"), a = this.advice(t), i = a >= 0 ? k(e, t[a].length) : null, r = this.stockLeft(), n = u(this.cfg().stock_text), s = Number((_ = this.product) == null ? void 0 : _.max_quantity) || 99, m = S(this.request()) !== "none", b = ((v = this.product) == null ? void 0 : v.is_available) === !1 || (($ = this.product) == null ? void 0 : $.status) === "out";
+      return !this.loaded || I() ? c : this.frame(l`<p class="aby-ff__empty">${o({ ar: "اختر العباية من إعدادات هذا القسم", en: "Pick the abaya in this section's settings" })}</p>`);
+    const e = y(this.product, "length"), a = this.advice(t), i = a >= 0 ? k(e, t[a].length) : null, r = this.stockLeft(), n = u(this.cfg().stock_text), s = Number((_ = this.product) == null ? void 0 : _.max_quantity) || 99, m = L(this.request()) !== "none", b = ((v = this.product) == null ? void 0 : v.is_available) === !1 || (($ = this.product) == null ? void 0 : $.status) === "out";
     return this.frame(l`<div class="aby-ff__grid">
       ${t.length ? this.renderAdvisor(t) : c}
       <div class="aby-ff__pick">

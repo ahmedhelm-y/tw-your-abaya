@@ -1,8 +1,7 @@
 import { nothing as y, html as b } from "lit";
 import { state as v } from "lit/decorators.js";
-import { b as x } from "./buy-D6n2j5jF.js";
-import { t as c, i as w, r as f } from "./styles-vAeqvApy.js";
-import { A as C } from "./section-Cbwxq9g0.js";
+import { t as c, i as x, r as f, b as w } from "./styles-C5ta92Qj.js";
+import { A as C } from "./section-DksPXwqH.js";
 function $(r) {
   if (typeof r != "string" || !r.trim()) return null;
   const e = r.trim().replace(/^(\d{4}-\d{2}-\d{2})\s+/, "$1T");
@@ -131,7 +130,7 @@ class g extends C {
   render() {
     const e = this.cfg(), t = this.code(), i = S(e.expires);
     if (!t || i)
-      return w() ? y : this.frame(b`<p class="aby-sc__note">${t ? c({ ar: "انتهى هذا الكوبون، ولن يظهر للعملاء", en: "This coupon has expired and is hidden from shoppers" }) : c({ ar: "اكتب كود الخصم في إعدادات هذا القسم", en: "Add the discount code in this section's settings" })}</p>`);
+      return x() ? y : this.frame(b`<p class="aby-sc__note">${t ? c({ ar: "انتهى هذا الكوبون، ولن يظهر للعملاء", en: "This coupon has expired and is hidden from shoppers" }) : c({ ar: "اكتب كود الخصم في إعدادات هذا القسم", en: "Add the discount code in this section's settings" })}</p>`);
     const s = f(e.discount_text) || c({ ar: "خصم خاص على طلبك", en: "A special discount on your order" });
     return this.frame(b`<div class="aby-sc__card">
         <p class="aby-sc__deal">${s}</p>
@@ -155,7 +154,7 @@ class g extends C {
         <p class="aby-sc__status" aria-live="polite">${this.status}</p>
         <div class="aby-sc__actions">
           ${this.revealed ? b`<button type="button" class="aby-btn aby-sc__ghost" @click=${() => this.copy()}>${c({ ar: "نسخ الكود", en: "Copy code" })}</button>` : b`<button type="button" class="aby-btn aby-sc__ghost" @click=${() => this.reveal()}>${c({ ar: "اكشف الكود", en: "Reveal the code" })}</button>`}
-          ${x() !== "none" ? b`<button type="button" class="aby-btn" aria-busy=${this.busy ? "true" : "false"} @click=${() => this.press({ quantity: 1 })}>${this.buyLabel()}</button>` : y}
+          ${w() !== "none" ? b`<button type="button" class="aby-btn" aria-busy=${this.busy ? "true" : "false"} @click=${() => this.press({ quantity: 1 })}>${this.buyLabel()}</button>` : y}
         </div>
       </div>`, { extraClass: "aby-sc" });
   }

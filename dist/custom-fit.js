@@ -1,9 +1,8 @@
 import { nothing as o, html as l } from "lit";
 import { state as h } from "lit/decorators.js";
-import { b as _ } from "./buy-D6n2j5jF.js";
-import { f as v, g as $, r as d, t as c, u as x, i as m } from "./styles-vAeqvApy.js";
+import { f as _, g as v, r as d, t as c, u as $, i as m, b as x } from "./styles-C5ta92Qj.js";
 import { m as w, s as k, w as C } from "./fit-Cpxi4Lua.js";
-import { A as z, p } from "./section-Cbwxq9g0.js";
+import { A as z, p } from "./section-DksPXwqH.js";
 var S = Object.defineProperty, y = (b, t, a, r) => {
   for (var e = void 0, i = b.length - 1, s; i >= 0; i--)
     (s = b[i]) && (e = s(t, a, e) || e);
@@ -40,10 +39,10 @@ class f extends z {
     return q;
   }
   async connectedCallback() {
-    super.connectedCallback(), this.product = await v(p(this.cfg()));
+    super.connectedCallback(), this.product = await _(p(this.cfg()));
   }
   fields() {
-    return $(this.cfg().fields, "fields").map((t) => ({ label: d(t.label), unit: d(t.unit), hint: d(t.hint) })).filter((t) => t.label);
+    return v(this.cfg().fields, "fields").map((t) => ({ label: d(t.label), unit: d(t.unit), hint: d(t.hint) })).filter((t) => t.label);
   }
   message() {
     var r;
@@ -53,7 +52,7 @@ class f extends z {
   /** The cart takes the measurements as the item's note when the product allows notes. */
   cartReady() {
     var t;
-    return !!((t = this.product) != null && t.can_add_note) && x(this.cfg().send_via) !== "whatsapp";
+    return !!((t = this.product) != null && t.can_add_note) && $(this.cfg().send_via) !== "whatsapp";
   }
   request() {
     var e, i;
@@ -78,7 +77,7 @@ class f extends z {
   render() {
     const t = this.cfg(), a = this.fields();
     if (!a.length && m()) return o;
-    const r = C(t.whatsapp, this.message()), e = this.cartReady() && !!p(t) && _({ items: [{ id: "x", quantity: 1 }] }) !== "none";
+    const r = C(t.whatsapp, this.message()), e = this.cartReady() && !!p(t) && x({ items: [{ id: "x", quantity: 1 }] }) !== "none";
     if (!e && !r && m()) return o;
     const i = d(t.free_text), s = String(t.image || "");
     return this.frame(l`<div class="aby-cf__grid">

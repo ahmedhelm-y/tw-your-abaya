@@ -2,9 +2,6 @@
 // the texts are written for this bundle.
 import { L, opt } from "./fields.mjs";
 
-// Sample logo for the template previews; the merchant swaps it for their own, or clears it to use the store logo
-const LOGO = "https://raw.githubusercontent.com/ahmedhelm-y/tw-your-abaya/store-assets/logo/";
-const logo = { logo: `${LOGO}logo.png`, logo_dark: `${LOGO}logo-dark.png` };
 const sel = (value, label) => [opt(value, label)];
 const product = (id, name) => [{ label: name, value: id, key: String(id) }];
 const rows = (prefix, list) => list.map((row) => Object.fromEntries(Object.entries(row).map(([k, v]) => [`${prefix}.${k}`, v])));
@@ -12,8 +9,7 @@ const review = (name, city, rate, text, height, size, fit) => ({
   name, city, place: L("", ""), rate, text, audio_url: "", image_1: "", image_2: "", image_3: "", avatar: "", verified: false, height, size: L(size, size), fit: sel(fit, fit),
 });
 
-export const ORDER = ["page-header", "hero", "trust-strip", "fit-finder", "complete-look", "reviews", "compare-table", "custom-fit", "occasion-edit",
-  "delivery-eta", "scratch-coupon", "page-footer", "sticky-buy"];
+// Each template has one goal, buying the abaya, and only the sections that lead to it; the rest stay in the editor
 
 const compare = rows("rows", [
   { us: L("التفصيل على مقاسك مجاناً", "Free tailoring to your size"), them: L("التفصيل برسوم إضافية", "Tailoring costs extra") },
@@ -50,27 +46,28 @@ const tailoring = rows("fields", [
 ]);
 
 const coupon = { code: "", discount_text: L("خصم 10% على أول عباية", "10% off your first abaya") };
-const footer = (about) => ({ about, show_payments: true });
+// The button at the end of the trust bar and the reviews, back up to the abaya
+const cta = (text) => ({ cta_text: text, cta_target: "top" });
+const trustTitle = L("ليه تطلبيها من عندنا", "Why order it from us");
 
 export const templates = [
   {
+    // Goal: buy the everyday abaya in the right size
     name: "daily-black",
     id: "594627ba-503a-40f4-bb58-515e4d648611",
     // الأزياء
     category_id: "814202285",
     is_default: true,
-    order: ORDER,
+    order: ["hero", "fit-finder", "complete-look", "delivery-eta", "trust-strip", "reviews", "sticky-buy"],
     values: {
-      "page-header": { ...logo, brand_color: "#3d3833", default_mode: sel("light", "فاتح"), sticky: true,
-        nav: rows("nav", [{ label: L("المقاس", "Fit"), target: "fit" }, { label: L("الآراء", "Reviews"), target: "reviews" }, { label: L("التوصيل", "Delivery"), target: "delivery" }]) },
-      hero: { layout: sel("split", "النص بجانب الصورة"), badge: L("الأكثر طلباً", "Most ordered"),
+      hero: { brand_color: "#3d3833", default_mode: sel("light", "فاتح"), layout: sel("split", "النص بجانب الصورة"), badge: L("الأكثر طلباً", "Most ordered"),
         title: L("عباية كل يوم", "The everyday abaya"), subtitle: L("سوداء بقصّة مريحة وطبقات ناعمة، تمشي معك من الدوام للمشوار", "Black, easy cut and soft tiers, from work to errands"),
         product: product(1627464171, "عباية كل يوم") },
-      "trust-strip": { badges },
+      "trust-strip": { badges, layout: sel("full", "قسم كامل"), title: trustTitle, ...cta(L("اطلبي عبايتك", "Order your abaya")) },
       "fit-finder": { product: product(1627464171, "عباية كل يوم"), stock_text: L("كمية محدودة", "Limited stock") },
       "complete-look": { main_product: product(1627464171, "عباية كل يوم"),
         products: [...product(1769567998, "بلوزة تحت العباية"), ...product(1303857404, "جاكيت خفيف")] },
-      reviews: { items: rows("items", [
+      reviews: { ...cta(L("اطلبي عبايتك", "Order your abaya")), items: rows("items", [
         review(L("نوف", "Nouf"), L("الرياض", "Riyadh"), 5, L("طولي 158 وأخدت 54، جات على الكعب بالضبط. الخامة ثقيلة ما تبان", "I'm 158 and took 54, it hits right at the heel. Heavy fabric, nothing shows"), 158, "M / 54", "true"),
         review(L("هيا", "Haya"), L("جدة", "Jeddah"), 5, L("ألبسها كل يوم للدوام، ما تتكرمش في السيارة", "I wear it to work daily, no creases from the car"), 166, "L / 58", "true"),
         review(L("العنود", "Alanoud"), L("الخبر", "Khobar"), 4, L("حلوة بس الكتف واسع شوي، المرة الجاية بطلب تفصيل", "Lovely, but the shoulder is a bit wide; next time I'll get it tailored"), 152, "S / 52", "large"),
@@ -81,22 +78,20 @@ export const templates = [
         products: [...product(1627464171, "عباية كل يوم"), ...product(1728697337, "عباية الحزام"), ...product(994547199, "عباية الطبقات")] },
       "delivery-eta": delivery,
       "scratch-coupon": coupon,
-      "page-footer": footer(L("عبايات يومية بقصّات مريحة وأطوال تناسبك", "Everyday abayas in easy cuts and lengths that fit you")),
     },
   },
   {
+    // Goal: buy the occasion abaya, tailored if needed
     name: "embroidered-occasion",
     id: "a4c8701f-7fa0-4fc5-8558-61ad0e5a80dc",
     category_id: "814202285",
     is_default: false,
-    order: ORDER,
+    order: ["hero", "fit-finder", "custom-fit", "delivery-eta", "trust-strip", "reviews", "sticky-buy"],
     values: {
-      "page-header": { ...logo, brand_color: "#5e7356", default_mode: sel("light", "فاتح"), sticky: true,
-        nav: rows("nav", [{ label: L("المقاس", "Fit"), target: "fit" }, { label: L("التفصيل", "Tailoring"), target: "tailor" }, { label: L("الآراء", "Reviews"), target: "reviews" }]) },
-      hero: { layout: sel("split", "النص بجانب الصورة"), badge: L("إصدار المناسبات", "Occasion edition"),
+      hero: { brand_color: "#5e7356", default_mode: sel("light", "فاتح"), layout: sel("split", "النص بجانب الصورة"), badge: L("إصدار المناسبات", "Occasion edition"),
         title: L("تطريز يحكي ذوقك", "Embroidery that speaks your taste"), subtitle: L("أكمام مطرّزة يدوياً على قماش منسدل، لعزايم العيد والزواجات", "Hand-embroidered sleeves on a flowing fabric, for Eid gatherings and weddings"),
         product: product(45289979, "عباية مطرزة") },
-      "trust-strip": { badges, layout: sel("full", "قسم كامل"), title: L("كيف نشتغل عليها", "How we make it"),
+      "trust-strip": { badges, layout: sel("full", "قسم كامل"), title: L("كيف نشتغل عليها", "How we make it"), ...cta(L("اطلبيها لمناسبتك", "Order it for your occasion")),
         steps: rows("steps", [
           { title: L("نختار القماش", "We pick the fabric"), text: L("قماش منسدل لا يشف، نجرّبه قبل القص", "A flowing, opaque fabric we test before cutting"), image: "" },
           { title: L("نطرّز يدوياً", "We embroider by hand"), text: L("كل كم ياخذ يوم شغل كامل", "Each sleeve takes a full day of work"), image: "" },
@@ -106,7 +101,7 @@ export const templates = [
       "fit-finder": { product: product(45289979, "عباية مطرزة"), title: L("اختاري مقاسك وطولك", "Pick your size and length") },
       "complete-look": { main_product: product(45289979, "عباية مطرزة"), title: L("كمّلي إطلالة المناسبة", "Complete the occasion look"),
         products: [...product(2052836592, "بلوزة ناعمة"), ...product(1303857404, "جاكيت مطبّع")] },
-      reviews: { title: L("لبسوها في مناسباتهم", "Worn at their occasions"), items: rows("items", [
+      reviews: { ...cta(L("اطلبيها لمناسبتك", "Order it for your occasion")), title: L("لبسوها في مناسباتهم", "Worn at their occasions"), items: rows("items", [
         review(L("ريم", "Reem"), L("الرياض", "Riyadh"), 5, L("لبستها في زواج أختي والكل سألني عنها. التطريز أحلى من الصور", "Wore it at my sister's wedding and everyone asked. The embroidery beats the photos"), 163, "M / 56", "true"),
         review(L("لمى", "Lama"), L("المدينة", "Madinah"), 5, L("فصّلتها على مقاسي ووصلت في 8 أيام، مضبوطة", "Tailored to my size and arrived in 8 days, perfect"), 170, "L / 58", "true"),
         review(L("جود", "Joud"), L("أبها", "Abha"), 4, L("الأكمام شوي قصيرة علي، بس الجودة ممتازة", "Sleeves a little short on me, but excellent quality"), 175, "L / 60", "small"),
@@ -117,29 +112,26 @@ export const templates = [
         products: [...product(45289979, "عباية مطرزة"), ...product(530339837, "عباية الأكمام المنفوخة"), ...product(388236010, "عباية الكشكش"), ...product(819393274, "عباية الورد")] },
       "delivery-eta": { ...delivery, prep_days: 2 },
       "scratch-coupon": coupon,
-      "page-footer": footer(L("عبايات مطرّزة للمناسبات، تُفصّل على مقاسك", "Embroidered occasion abayas, tailored to your size")),
     },
   },
   {
+    // Goal: buy the Eid abaya in time for Eid
     name: "eid-edit",
     id: "3214ec38-7234-4d56-98a8-308d185c9b79",
     category_id: "814202285",
     is_default: false,
-    order: ["page-header", "hero", "occasion-edit", "delivery-eta", "trust-strip", "fit-finder", "complete-look", "reviews", "compare-table",
-      "custom-fit", "scratch-coupon", "page-footer", "sticky-buy"],
+    order: ["hero", "delivery-eta", "fit-finder", "complete-look", "trust-strip", "reviews", "sticky-buy"],
     values: {
-      "page-header": { ...logo, brand_color: "#9b7b4a", default_mode: sel("light", "فاتح"), sticky: true,
-        nav: rows("nav", [{ label: L("التشكيلة", "The edit"), target: "edit" }, { label: L("التوصيل", "Delivery"), target: "delivery" }, { label: L("الآراء", "Reviews"), target: "reviews" }]) },
-      hero: { layout: sel("split", "النص بجانب الصورة"), badge: L("تشكيلة العيد", "The Eid edit"),
+      hero: { brand_color: "#9b7b4a", default_mode: sel("light", "فاتح"), layout: sel("split", "النص بجانب الصورة"), badge: L("تشكيلة العيد", "The Eid edit"),
         title: L("عيدك بعباية جديدة", "A new abaya for your Eid"), subtitle: L("ألوان فاتحة وكسرات ناعمة، وتوصلك قبل العيد", "Light colors and soft pleats, delivered before Eid"),
         product: product(1802683624, "عباية الكسرات") },
       "occasion-edit": { title: L("اختاري عباية العيد", "Pick your Eid abaya"),
         products: [...product(1802683624, "عباية الكسرات"), ...product(1728697337, "عباية الحزام"), ...product(1627464171, "عباية الطبقات"), ...product(994547199, "عباية واسعة"), ...product(819393274, "عباية الورد"), ...product(530339837, "عباية الأكمام المنفوخة")] },
       "delivery-eta": { ...delivery, title: L("توصلك قبل العيد", "Arrives before Eid") },
-      "trust-strip": { badges },
+      "trust-strip": { badges, layout: sel("full", "قسم كامل"), title: trustTitle, ...cta(L("اطلبيها قبل العيد", "Order it before Eid")) },
       "fit-finder": { product: product(1802683624, "عباية الكسرات") },
       "complete-look": { main_product: product(1802683624, "عباية الكسرات"), products: [...product(1769567998, "بلوزة بيضاء"), ...product(2052836592, "بلوزة ناعمة")] },
-      reviews: { items: rows("items", [
+      reviews: { ...cta(L("اطلبيها قبل العيد", "Order it before Eid")), items: rows("items", [
         review(L("سارة", "Sara"), L("الدمام", "Dammam"), 5, L("طلبتها قبل العيد بأسبوع ووصلت في 3 أيام", "Ordered a week before Eid and it arrived in 3 days"), 160, "M / 56", "true"),
         review(L("دانة", "Dana"), L("الرياض", "Riyadh"), 5, L("اللون البيج يجنن، والكسرات ما تروح بعد الغسيل", "The beige is gorgeous and the pleats hold after washing"), 155, "S / 54", "true"),
         review(L("مها", "Maha"), L("الطائف", "Taif"), 4, L("مقاسها جا واسع شوي، خذي مقاس أصغر", "It runs a bit large, size down"), 168, "L / 58", "large"),
@@ -147,7 +139,14 @@ export const templates = [
       "compare-table": { rows: compare },
       "custom-fit": { fields: tailoring, product: product(1802683624, "عباية الكسرات") },
       "scratch-coupon": { ...coupon, discount_text: L("خصم العيد 15%", "15% off for Eid") },
-      "page-footer": footer(L("تشكيلات عبايات للعيد والمناسبات", "Abaya edits for Eid and occasions")),
     },
   },
 ];
+
+// Every section filled in, for the harness, the store screenshots and the help page. Not a Salla template.
+export const showcase = {
+  name: "showcase",
+  order: ["hero", "fit-finder", "complete-look", "compare-table", "custom-fit", "delivery-eta", "occasion-edit", "scratch-coupon", "trust-strip", "reviews", "sticky-buy"],
+  // A sample code so the scratch card shows; the templates leave it empty for the merchant's own
+  values: { ...templates[0].values, "scratch-coupon": { ...coupon, code: "ABAYA10" } },
+};

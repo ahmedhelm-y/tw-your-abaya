@@ -2,421 +2,6 @@
   "id": "594627ba-503a-40f4-bb58-515e4d648611",
   "components": [
     {
-      "title": "رأس الصفحة",
-      "icon": "sicon-store",
-      "name": "page-header",
-      "key": "2291caf1-b361-42ad-96b4-6f475173aa54",
-      "image": "",
-      "props": {
-        "min-height": "76px"
-      },
-      "fields": [
-        {
-          "id": "logo",
-          "type": "string",
-          "format": "image",
-          "label": "الشعار",
-          "icon": "sicon-image",
-          "required": false,
-          "description": "اتركه فارغاً لاستخدام شعار متجرك",
-          "value": "https://raw.githubusercontent.com/ahmedhelm-y/tw-your-abaya/store-assets/logo/logo.png"
-        },
-        {
-          "id": "logo_dark",
-          "type": "string",
-          "format": "image",
-          "label": "شعار الوضع الداكن",
-          "icon": "sicon-image",
-          "required": false,
-          "description": "يظهر في الوضع الداكن وفوق الصور في الرأس الشفاف، وبدونه يظهر شعارك باللون الأبيض",
-          "value": "https://raw.githubusercontent.com/ahmedhelm-y/tw-your-abaya/store-assets/logo/logo-dark.png"
-        },
-        {
-          "id": "logo_height",
-          "type": "number",
-          "format": "number",
-          "inputType": "number",
-          "label": "ارتفاع الشعار (px)",
-          "icon": "sicon-calculator",
-          "required": false,
-          "description": null,
-          "minimum": 24,
-          "maximum": 140,
-          "value": 56
-        },
-        {
-          "id": "align",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "مكان الشعار",
-          "icon": "sicon-list",
-          "required": false,
-          "description": null,
-          "options": [
-            {
-              "label": "الوسط",
-              "value": "center",
-              "key": "center"
-            },
-            {
-              "label": "البداية",
-              "value": "start",
-              "key": "start"
-            }
-          ],
-          "selected": [
-            {
-              "label": "الوسط",
-              "value": "center",
-              "key": "center"
-            }
-          ],
-          "value": [
-            {
-              "label": "الوسط",
-              "value": "center",
-              "key": "center"
-            }
-          ]
-        },
-        {
-          "id": "hd-line-1",
-          "type": "static",
-          "format": "line"
-        },
-        {
-          "id": "sticky",
-          "type": "boolean",
-          "format": "switch",
-          "label": "تثبيت الرأس أعلى الصفحة عند التمرير",
-          "icon": "sicon-toggle-off",
-          "required": false,
-          "description": null,
-          "value": true,
-          "selected": true
-        },
-        {
-          "id": "transparent",
-          "type": "boolean",
-          "format": "switch",
-          "label": "رأس شفاف فوق القسم الأول",
-          "icon": "sicon-toggle-off",
-          "required": false,
-          "description": "يظهر فوق صورة القسم الأول، وتظهر خلفيته عند التمرير",
-          "value": false,
-          "selected": false
-        },
-        {
-          "id": "show_shadow",
-          "type": "boolean",
-          "format": "switch",
-          "label": "خط سفلي للرأس",
-          "icon": "sicon-toggle-off",
-          "required": false,
-          "description": null,
-          "value": true,
-          "selected": true
-        },
-        {
-          "id": "hd-line-2",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>روابط أقسام الصفحة</strong>"
-        },
-        {
-          "id": "nav",
-          "type": "collection",
-          "format": "collection",
-          "required": false,
-          "minLength": 0,
-          "maxLength": 6,
-          "item_label": "رابط",
-          "fields": [
-            {
-              "id": "nav.label",
-              "type": "string",
-              "format": "text",
-              "label": "النص",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            },
-            {
-              "id": "nav.target",
-              "type": "string",
-              "format": "text",
-              "label": "معرّف القسم",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": false,
-              "required": false,
-              "placeholder": null,
-              "description": "نفس المعرّف المكتوب في إعدادات القسم",
-              "minLength": 0,
-              "maxLength": 200,
-              "value": ""
-            }
-          ],
-          "value": [
-            {
-              "nav.label": {
-                "ar": "المقاس",
-                "en": "Fit"
-              },
-              "nav.target": "fit"
-            },
-            {
-              "nav.label": {
-                "ar": "الآراء",
-                "en": "Reviews"
-              },
-              "nav.target": "reviews"
-            },
-            {
-              "nav.label": {
-                "ar": "التوصيل",
-                "en": "Delivery"
-              },
-              "nav.target": "delivery"
-            }
-          ]
-        },
-        {
-          "id": "hd-line-3",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>زر الشراء</strong>"
-        },
-        {
-          "id": "show_buy",
-          "type": "boolean",
-          "format": "switch",
-          "label": "إظهار زر الشراء",
-          "icon": "sicon-toggle-off",
-          "required": false,
-          "description": null,
-          "value": true,
-          "selected": true
-        },
-        {
-          "id": "buy_text",
-          "type": "string",
-          "format": "text",
-          "label": "نص الزر",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "اشتري الآن",
-            "en": "Buy now"
-          }
-        },
-        {
-          "id": "hd-line-4",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الصفحة</strong>"
-        },
-        {
-          "id": "brand_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون البراند",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "لون واحد تُبنى منه ألوان الصفحة كلها في الوضع الفاتح والداكن. اتركه فارغاً لاستخدام ألوان متجرك",
-          "value": "#3d3833"
-        },
-        {
-          "id": "show_mode_toggle",
-          "type": "boolean",
-          "format": "switch",
-          "label": "زر التبديل بين الوضع الفاتح والداكن",
-          "icon": "sicon-toggle-off",
-          "required": false,
-          "description": "يتذكر اختيار العميل",
-          "value": true,
-          "selected": true
-        },
-        {
-          "id": "default_mode",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "الوضع الافتراضي للصفحة",
-          "icon": "sicon-list",
-          "required": false,
-          "description": null,
-          "options": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "light"
-            },
-            {
-              "label": "داكن",
-              "value": "dark",
-              "key": "dark"
-            },
-            {
-              "label": "حسب جهاز الزائر",
-              "value": "system",
-              "key": "system"
-            }
-          ],
-          "selected": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "light"
-            }
-          ],
-          "value": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "light"
-            }
-          ]
-        },
-        {
-          "id": "clr-line-l",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الفاتح</strong>"
-        },
-        {
-          "id": "l_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
-          "value": ""
-        },
-        {
-          "id": "l_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "clr-line-d",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الداكن</strong>"
-        },
-        {
-          "id": "d_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        }
-      ]
-    },
-    {
       "title": "القسم الافتتاحي",
       "icon": "sicon-image",
       "name": "hero",
@@ -731,398 +316,68 @@
           "multilanguage": false,
           "required": false,
           "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
+          "description": "كلمة إنجليزية بدون مسافات مثل fit. الأزرار اللي بتنزل لقسم بتستخدمه",
           "minLength": 0,
           "maxLength": 200,
-          "value": ""
+          "value": "top"
         },
         {
-          "id": "clr-line-l",
+          "id": "hero-line-colors",
           "type": "static",
           "format": "description",
-          "value": "<strong>ألوان الوضع الفاتح</strong>"
+          "value": "<strong>ألوان الصفحة كلها</strong>"
         },
         {
-          "id": "l_bg",
+          "id": "brand_color",
           "type": "string",
           "format": "color",
           "inputType": "color",
-          "label": "الخلفية",
+          "label": "لون البراند",
           "icon": "sicon-format-fill",
           "required": false,
-          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
-          "value": ""
+          "description": "لون واحد تُبنى منه ألوان كل أقسام الصفحة في الوضع الفاتح والداكن. اتركه فارغاً لاستخدام ألوان متجرك",
+          "value": "#3d3833"
         },
         {
-          "id": "l_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "clr-line-d",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الداكن</strong>"
-        },
-        {
-          "id": "d_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
+          "id": "default_mode",
           "type": "items",
           "format": "dropdown-list",
           "source": "Manual",
-          "label": "وضع الألوان",
+          "label": "وضع الصفحة",
           "icon": "sicon-list",
           "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
+          "description": "الأقسام اللي وضع ألوانها \"حسب وضع الصفحة\" بتتبعه",
           "options": [
             {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            },
-            {
-              "label": "فاتح دائماً",
+              "label": "فاتح",
               "value": "light",
               "key": "light"
             },
             {
-              "label": "داكن دائماً",
+              "label": "داكن",
               "value": "dark",
               "key": "dark"
+            },
+            {
+              "label": "حسب جهاز الزائر",
+              "value": "system",
+              "key": "system"
             }
           ],
           "selected": [
             {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
+              "label": "فاتح",
+              "value": "light",
+              "key": "light"
             }
           ],
           "value": [
             {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
+              "label": "فاتح",
+              "value": "light",
+              "key": "light"
             }
           ]
-        }
-      ]
-    },
-    {
-      "title": "شريط الثقة",
-      "icon": "sicon-shield-check",
-      "name": "trust-strip",
-      "key": "01bf40c3-3a1d-402d-8351-9d6a6bd19cc0",
-      "image": "",
-      "props": {
-        "min-height": "120px"
-      },
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "الوصف",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "section_id",
-          "type": "string",
-          "format": "text",
-          "label": "معرّف القسم (للروابط)",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
-          "minLength": 0,
-          "maxLength": 200,
-          "value": "trust"
-        },
-        {
-          "id": "layout",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "الشكل",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "الشريط الصغير يخفي العنوان، ويظهر لو مفيش خطوات",
-          "options": [
-            {
-              "label": "شريط صغير",
-              "value": "compact",
-              "key": "compact"
-            },
-            {
-              "label": "قسم كامل",
-              "value": "full",
-              "key": "full"
-            }
-          ],
-          "selected": [
-            {
-              "label": "شريط صغير",
-              "value": "compact",
-              "key": "compact"
-            }
-          ],
-          "value": [
-            {
-              "label": "شريط صغير",
-              "value": "compact",
-              "key": "compact"
-            }
-          ]
-        },
-        {
-          "id": "badges",
-          "type": "collection",
-          "format": "collection",
-          "required": false,
-          "minLength": 0,
-          "maxLength": 6,
-          "item_label": "ميزة",
-          "fields": [
-            {
-              "id": "badges.icon",
-              "type": "string",
-              "format": "icon",
-              "label": "الأيقونة",
-              "icon": "sicon-star2",
-              "required": false,
-              "class": "form--inline",
-              "value": "sicon-check"
-            },
-            {
-              "id": "badges.text",
-              "type": "string",
-              "format": "text",
-              "label": "النص",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            }
-          ],
-          "value": [
-            {
-              "badges.icon": "sicon-ruler",
-              "badges.text": {
-                "ar": "6 أطوال تناسب كل الطول",
-                "en": "Six lengths for every height"
-              }
-            },
-            {
-              "badges.icon": "sicon-pencil-ruler",
-              "badges.text": {
-                "ar": "تفصيل مجاني على مقاسك",
-                "en": "Free tailoring to your size"
-              }
-            },
-            {
-              "badges.icon": "sicon-shipping",
-              "badges.text": {
-                "ar": "شحن لكل مدن المملكة",
-                "en": "Shipping across the Kingdom"
-              }
-            },
-            {
-              "badges.icon": "sicon-rotate",
-              "badges.text": {
-                "ar": "استبدال سهل",
-                "en": "Easy exchange"
-              }
-            }
-          ]
-        },
-        {
-          "id": "ts-line-1",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>إزاي بنعملها (اختياري)</strong>"
-        },
-        {
-          "id": "steps",
-          "type": "collection",
-          "format": "collection",
-          "required": false,
-          "minLength": 0,
-          "maxLength": 4,
-          "item_label": "خطوة",
-          "fields": [
-            {
-              "id": "steps.title",
-              "type": "string",
-              "format": "text",
-              "label": "العنوان",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            },
-            {
-              "id": "steps.text",
-              "type": "string",
-              "format": "textarea",
-              "label": "الوصف",
-              "icon": "sicon-paragraph",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "maxLength": 1000,
-              "rows": 3,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            },
-            {
-              "id": "steps.image",
-              "type": "string",
-              "format": "image",
-              "label": "صورة",
-              "icon": "sicon-image",
-              "required": false,
-              "description": null,
-              "value": ""
-            }
-          ],
-          "value": []
         },
         {
           "id": "clr-line-l",
@@ -1254,7 +509,7 @@
           "label": "وضع الألوان",
           "icon": "sicon-list",
           "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
+          "description": "حسب وضع الصفحة يتبع \"وضع الصفحة\" في القسم الافتتاحي، أو جهاز الزائر إذا لم تستخدمه",
           "options": [
             {
               "label": "حسب وضع الصفحة",
@@ -1342,7 +597,7 @@
           "multilanguage": false,
           "required": false,
           "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
+          "description": "كلمة إنجليزية بدون مسافات مثل fit. الأزرار اللي بتنزل لقسم بتستخدمه",
           "minLength": 0,
           "maxLength": 200,
           "value": "fit"
@@ -1685,7 +940,7 @@
           "label": "وضع الألوان",
           "icon": "sicon-list",
           "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
+          "description": "حسب وضع الصفحة يتبع \"وضع الصفحة\" في القسم الافتتاحي، أو جهاز الزائر إذا لم تستخدمه",
           "options": [
             {
               "label": "حسب وضع الصفحة",
@@ -1773,7 +1028,7 @@
           "multilanguage": false,
           "required": false,
           "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
+          "description": "كلمة إنجليزية بدون مسافات مثل fit. الأزرار اللي بتنزل لقسم بتستخدمه",
           "minLength": 0,
           "maxLength": 200,
           "value": "look"
@@ -2030,7 +1285,939 @@
           "label": "وضع الألوان",
           "icon": "sicon-list",
           "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
+          "description": "حسب وضع الصفحة يتبع \"وضع الصفحة\" في القسم الافتتاحي، أو جهاز الزائر إذا لم تستخدمه",
+          "options": [
+            {
+              "label": "حسب وضع الصفحة",
+              "value": "auto",
+              "key": "auto"
+            },
+            {
+              "label": "فاتح دائماً",
+              "value": "light",
+              "key": "light"
+            },
+            {
+              "label": "داكن دائماً",
+              "value": "dark",
+              "key": "dark"
+            }
+          ],
+          "selected": [
+            {
+              "label": "حسب وضع الصفحة",
+              "value": "auto",
+              "key": "auto"
+            }
+          ],
+          "value": [
+            {
+              "label": "حسب وضع الصفحة",
+              "value": "auto",
+              "key": "auto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "هتوصلك امتى",
+      "icon": "sicon-time",
+      "name": "delivery-eta",
+      "key": "569bd0da-3d4a-4c1d-a15a-d0a1b5343821",
+      "image": "",
+      "props": {
+        "min-height": "280px"
+      },
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "placeholder": null,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 200,
+          "value": {
+            "ar": "هتوصلك امتى؟",
+            "en": "When will it arrive?"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "الوصف",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "placeholder": null,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 200,
+          "value": {
+            "ar": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "section_id",
+          "type": "string",
+          "format": "text",
+          "label": "معرّف القسم (للروابط)",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": false,
+          "required": false,
+          "placeholder": null,
+          "description": "كلمة إنجليزية بدون مسافات مثل fit. الأزرار اللي بتنزل لقسم بتستخدمه",
+          "minLength": 0,
+          "maxLength": 200,
+          "value": "delivery"
+        },
+        {
+          "id": "lead",
+          "type": "string",
+          "format": "text",
+          "label": "النص فوق العداد",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "placeholder": null,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 200,
+          "value": {
+            "ar": "اطلبي خلال",
+            "en": "Order within"
+          }
+        },
+        {
+          "id": "cutoff_hour",
+          "type": "number",
+          "format": "number",
+          "inputType": "number",
+          "label": "آخر ساعة للطلب في اليوم (0 – 24)",
+          "icon": "sicon-calculator",
+          "required": false,
+          "description": "بتوقيت المتجر. بعدها يبدأ التجهيز من يوم العمل التالي",
+          "minimum": 0,
+          "maximum": 24,
+          "value": 13
+        },
+        {
+          "id": "prep_days",
+          "type": "number",
+          "format": "number",
+          "inputType": "number",
+          "label": "أيام التجهيز",
+          "icon": "sicon-calculator",
+          "required": false,
+          "description": null,
+          "minimum": 0,
+          "maximum": 30,
+          "value": 1
+        },
+        {
+          "id": "ship_days",
+          "type": "number",
+          "format": "number",
+          "inputType": "number",
+          "label": "أيام الشحن",
+          "icon": "sicon-calculator",
+          "required": false,
+          "description": null,
+          "minimum": 0,
+          "maximum": 30,
+          "value": 2
+        },
+        {
+          "id": "off_days",
+          "type": "items",
+          "format": "checkbox-list",
+          "label": "أيام الإجازة",
+          "icon": "sicon-list",
+          "required": false,
+          "multichoice": true,
+          "description": null,
+          "options": [
+            {
+              "label": "الأحد",
+              "value": "0",
+              "key": "0"
+            },
+            {
+              "label": "الاثنين",
+              "value": "1",
+              "key": "1"
+            },
+            {
+              "label": "الثلاثاء",
+              "value": "2",
+              "key": "2"
+            },
+            {
+              "label": "الأربعاء",
+              "value": "3",
+              "key": "3"
+            },
+            {
+              "label": "الخميس",
+              "value": "4",
+              "key": "4"
+            },
+            {
+              "label": "الجمعة",
+              "value": "5",
+              "key": "5"
+            },
+            {
+              "label": "السبت",
+              "value": "6",
+              "key": "6"
+            }
+          ],
+          "selected": [
+            {
+              "label": "الجمعة",
+              "value": "5",
+              "key": "5"
+            }
+          ],
+          "value": [
+            {
+              "label": "الجمعة",
+              "value": "5",
+              "key": "5"
+            }
+          ]
+        },
+        {
+          "id": "tz_offset",
+          "type": "number",
+          "format": "number",
+          "inputType": "number",
+          "label": "فرق التوقيت عن UTC",
+          "icon": "sicon-calculator",
+          "required": false,
+          "description": "السعودية +3",
+          "minimum": -12,
+          "maximum": 14,
+          "value": 3
+        },
+        {
+          "id": "times",
+          "type": "collection",
+          "format": "collection",
+          "required": false,
+          "minLength": 0,
+          "maxLength": 4,
+          "item_label": "مدة",
+          "fields": [
+            {
+              "id": "times.label",
+              "type": "string",
+              "format": "text",
+              "label": "النوع",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "placeholder": null,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 200,
+              "value": {
+                "ar": "",
+                "en": ""
+              }
+            },
+            {
+              "id": "times.value",
+              "type": "string",
+              "format": "text",
+              "label": "المدة",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "placeholder": null,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 200,
+              "value": {
+                "ar": "",
+                "en": ""
+              }
+            }
+          ],
+          "value": [
+            {
+              "times.label": {
+                "ar": "الجاهزة",
+                "en": "Ready to wear"
+              },
+              "times.value": {
+                "ar": "تُشحن خلال يوم",
+                "en": "Ships in a day"
+              }
+            },
+            {
+              "times.label": {
+                "ar": "المفصّلة على مقاسك",
+                "en": "Tailored to your size"
+              },
+              "times.value": {
+                "ar": "من 7 لـ 10 أيام",
+                "en": "7 to 10 days"
+              }
+            }
+          ]
+        },
+        {
+          "id": "faqs",
+          "type": "collection",
+          "format": "collection",
+          "required": false,
+          "minLength": 0,
+          "maxLength": 6,
+          "item_label": "سؤال",
+          "fields": [
+            {
+              "id": "faqs.q",
+              "type": "string",
+              "format": "text",
+              "label": "السؤال",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "placeholder": null,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 200,
+              "value": {
+                "ar": "",
+                "en": ""
+              }
+            },
+            {
+              "id": "faqs.a",
+              "type": "string",
+              "format": "textarea",
+              "label": "الإجابة",
+              "icon": "sicon-paragraph",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "maxLength": 1000,
+              "rows": 3,
+              "value": {
+                "ar": "",
+                "en": ""
+              }
+            }
+          ],
+          "value": [
+            {
+              "faqs.q": {
+                "ar": "لو الطول ما ناسبني؟",
+                "en": "What if the length doesn't fit?"
+              },
+              "faqs.a": {
+                "ar": "تقدرين تستبدلينها بطول ثاني خلال 7 أيام من الاستلام، بشرط ما تكون اتلبست أو اتغسلت.",
+                "en": "You can exchange it for another length within 7 days of delivery, as long as it was not worn or washed."
+              }
+            },
+            {
+              "faqs.q": {
+                "ar": "كيف أغسل العباية؟",
+                "en": "How do I wash the abaya?"
+              },
+              "faqs.a": {
+                "ar": "غسيل بارد على دورة خفيفة، أو تنظيف جاف. كوي على حرارة منخفضة من الداخل.",
+                "en": "Cold gentle wash or dry clean. Iron on low heat, inside out."
+              }
+            },
+            {
+              "faqs.q": {
+                "ar": "هل الطرحة معاها؟",
+                "en": "Does it come with a sheila?"
+              },
+              "faqs.a": {
+                "ar": "الطرحة تنباع لوحدها، وتقدرين تضيفينها من قسم أكملي اللوك.",
+                "en": "The sheila is sold on its own; add it from the complete the look section."
+              }
+            }
+          ]
+        },
+        {
+          "id": "clr-line-l",
+          "type": "static",
+          "format": "description",
+          "value": "<strong>ألوان الوضع الفاتح</strong>"
+        },
+        {
+          "id": "l_bg",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
+          "value": ""
+        },
+        {
+          "id": "l_card",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "خلفية البطاقات",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "l_title",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "العناوين",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "l_text",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "النصوص",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "l_accent",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "الأزرار والتمييز",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "clr-line-d",
+          "type": "static",
+          "format": "description",
+          "value": "<strong>ألوان الوضع الداكن</strong>"
+        },
+        {
+          "id": "d_bg",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "d_card",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "خلفية البطاقات",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "d_title",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "العناوين",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "d_text",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "النصوص",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "d_accent",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "الأزرار والتمييز",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "حسب وضع الصفحة يتبع \"وضع الصفحة\" في القسم الافتتاحي، أو جهاز الزائر إذا لم تستخدمه",
+          "options": [
+            {
+              "label": "حسب وضع الصفحة",
+              "value": "auto",
+              "key": "auto"
+            },
+            {
+              "label": "فاتح دائماً",
+              "value": "light",
+              "key": "light"
+            },
+            {
+              "label": "داكن دائماً",
+              "value": "dark",
+              "key": "dark"
+            }
+          ],
+          "selected": [
+            {
+              "label": "حسب وضع الصفحة",
+              "value": "auto",
+              "key": "auto"
+            }
+          ],
+          "value": [
+            {
+              "label": "حسب وضع الصفحة",
+              "value": "auto",
+              "key": "auto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "شريط الثقة",
+      "icon": "sicon-shield-check",
+      "name": "trust-strip",
+      "key": "01bf40c3-3a1d-402d-8351-9d6a6bd19cc0",
+      "image": "",
+      "props": {
+        "min-height": "120px"
+      },
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "placeholder": null,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 200,
+          "value": {
+            "ar": "ليه تطلبيها من عندنا",
+            "en": "Why order it from us"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "الوصف",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "placeholder": null,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 200,
+          "value": {
+            "ar": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "section_id",
+          "type": "string",
+          "format": "text",
+          "label": "معرّف القسم (للروابط)",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": false,
+          "required": false,
+          "placeholder": null,
+          "description": "كلمة إنجليزية بدون مسافات مثل fit. الأزرار اللي بتنزل لقسم بتستخدمه",
+          "minLength": 0,
+          "maxLength": 200,
+          "value": "trust"
+        },
+        {
+          "id": "layout",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "الشكل",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الشريط الصغير يخفي العنوان، ويظهر لو مفيش خطوات",
+          "options": [
+            {
+              "label": "شريط صغير",
+              "value": "compact",
+              "key": "compact"
+            },
+            {
+              "label": "قسم كامل",
+              "value": "full",
+              "key": "full"
+            }
+          ],
+          "selected": [
+            {
+              "label": "قسم كامل",
+              "value": "full",
+              "key": "full"
+            }
+          ],
+          "value": [
+            {
+              "label": "قسم كامل",
+              "value": "full",
+              "key": "full"
+            }
+          ]
+        },
+        {
+          "id": "badges",
+          "type": "collection",
+          "format": "collection",
+          "required": false,
+          "minLength": 0,
+          "maxLength": 6,
+          "item_label": "ميزة",
+          "fields": [
+            {
+              "id": "badges.icon",
+              "type": "string",
+              "format": "icon",
+              "label": "الأيقونة",
+              "icon": "sicon-star2",
+              "required": false,
+              "class": "form--inline",
+              "value": "sicon-check"
+            },
+            {
+              "id": "badges.text",
+              "type": "string",
+              "format": "text",
+              "label": "النص",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "placeholder": null,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 200,
+              "value": {
+                "ar": "",
+                "en": ""
+              }
+            }
+          ],
+          "value": [
+            {
+              "badges.icon": "sicon-ruler",
+              "badges.text": {
+                "ar": "6 أطوال تناسب كل الطول",
+                "en": "Six lengths for every height"
+              }
+            },
+            {
+              "badges.icon": "sicon-pencil-ruler",
+              "badges.text": {
+                "ar": "تفصيل مجاني على مقاسك",
+                "en": "Free tailoring to your size"
+              }
+            },
+            {
+              "badges.icon": "sicon-shipping",
+              "badges.text": {
+                "ar": "شحن لكل مدن المملكة",
+                "en": "Shipping across the Kingdom"
+              }
+            },
+            {
+              "badges.icon": "sicon-rotate",
+              "badges.text": {
+                "ar": "استبدال سهل",
+                "en": "Easy exchange"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ts-line-1",
+          "type": "static",
+          "format": "description",
+          "value": "<strong>إزاي بنعملها (اختياري)</strong>"
+        },
+        {
+          "id": "steps",
+          "type": "collection",
+          "format": "collection",
+          "required": false,
+          "minLength": 0,
+          "maxLength": 4,
+          "item_label": "خطوة",
+          "fields": [
+            {
+              "id": "steps.title",
+              "type": "string",
+              "format": "text",
+              "label": "العنوان",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "placeholder": null,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 200,
+              "value": {
+                "ar": "",
+                "en": ""
+              }
+            },
+            {
+              "id": "steps.text",
+              "type": "string",
+              "format": "textarea",
+              "label": "الوصف",
+              "icon": "sicon-paragraph",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "maxLength": 1000,
+              "rows": 3,
+              "value": {
+                "ar": "",
+                "en": ""
+              }
+            },
+            {
+              "id": "steps.image",
+              "type": "string",
+              "format": "image",
+              "label": "صورة",
+              "icon": "sicon-image",
+              "required": false,
+              "description": null,
+              "value": ""
+            }
+          ],
+          "value": []
+        },
+        {
+          "id": "cta-line",
+          "type": "static",
+          "format": "description",
+          "value": "<strong>زرار الشراء</strong>"
+        },
+        {
+          "id": "show_cta",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إظهار الزرار في آخر القسم",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": null,
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "cta_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص الزرار",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "placeholder": null,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 200,
+          "value": {
+            "ar": "اطلبي عبايتك",
+            "en": "Order your abaya"
+          }
+        },
+        {
+          "id": "cta_target",
+          "type": "string",
+          "format": "text",
+          "label": "معرّف القسم اللي الزرار ينزل له",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": false,
+          "required": false,
+          "placeholder": null,
+          "description": "top هو القسم الافتتاحي اللي فيه زرار الشراء",
+          "minLength": 0,
+          "maxLength": 200,
+          "value": "top"
+        },
+        {
+          "id": "clr-line-l",
+          "type": "static",
+          "format": "description",
+          "value": "<strong>ألوان الوضع الفاتح</strong>"
+        },
+        {
+          "id": "l_bg",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
+          "value": ""
+        },
+        {
+          "id": "l_card",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "خلفية البطاقات",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "l_title",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "العناوين",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "l_text",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "النصوص",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "l_accent",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "الأزرار والتمييز",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "clr-line-d",
+          "type": "static",
+          "format": "description",
+          "value": "<strong>ألوان الوضع الداكن</strong>"
+        },
+        {
+          "id": "d_bg",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "d_card",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "خلفية البطاقات",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "d_title",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "العناوين",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "d_text",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "النصوص",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "d_accent",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "الأزرار والتمييز",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "حسب وضع الصفحة يتبع \"وضع الصفحة\" في القسم الافتتاحي، أو جهاز الزائر إذا لم تستخدمه",
           "options": [
             {
               "label": "حسب وضع الصفحة",
@@ -2118,7 +2305,7 @@
           "multilanguage": false,
           "required": false,
           "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
+          "description": "كلمة إنجليزية بدون مسافات مثل fit. الأزرار اللي بتنزل لقسم بتستخدمه",
           "minLength": 0,
           "maxLength": 200,
           "value": "reviews"
@@ -2549,2278 +2736,16 @@
           ]
         },
         {
-          "id": "clr-line-l",
+          "id": "cta-line",
           "type": "static",
           "format": "description",
-          "value": "<strong>ألوان الوضع الفاتح</strong>"
+          "value": "<strong>زرار الشراء</strong>"
         },
         {
-          "id": "l_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
-          "value": ""
-        },
-        {
-          "id": "l_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "clr-line-d",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الداكن</strong>"
-        },
-        {
-          "id": "d_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
-          "options": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            },
-            {
-              "label": "فاتح دائماً",
-              "value": "light",
-              "key": "light"
-            },
-            {
-              "label": "داكن دائماً",
-              "value": "dark",
-              "key": "dark"
-            }
-          ],
-          "selected": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ],
-          "value": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "إحنا ولا غيرنا",
-      "icon": "sicon-list",
-      "name": "compare-table",
-      "key": "f4560232-b312-46c2-8ce2-8fad103c8786",
-      "image": "",
-      "props": {
-        "min-height": "320px"
-      },
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "ليه تختاري عبايتنا؟",
-            "en": "Why choose our abaya?"
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "الوصف",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "section_id",
-          "type": "string",
-          "format": "text",
-          "label": "معرّف القسم (للروابط)",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
-          "minLength": 0,
-          "maxLength": 200,
-          "value": "why"
-        },
-        {
-          "id": "us_label",
-          "type": "string",
-          "format": "text",
-          "label": "عنوان عمودنا",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "عندنا",
-            "en": "With us"
-          }
-        },
-        {
-          "id": "them_label",
-          "type": "string",
-          "format": "text",
-          "label": "عنوان العمود التاني",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "عند غيرنا",
-            "en": "Elsewhere"
-          }
-        },
-        {
-          "id": "rows",
-          "type": "collection",
-          "format": "collection",
-          "required": false,
-          "minLength": 0,
-          "maxLength": 10,
-          "item_label": "سطر",
-          "fields": [
-            {
-              "id": "rows.us",
-              "type": "string",
-              "format": "text",
-              "label": "ميزتنا",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            },
-            {
-              "id": "rows.them",
-              "type": "string",
-              "format": "text",
-              "label": "عند غيرنا",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            }
-          ],
-          "value": [
-            {
-              "rows.us": {
-                "ar": "التفصيل على مقاسك مجاناً",
-                "en": "Free tailoring to your size"
-              },
-              "rows.them": {
-                "ar": "التفصيل برسوم إضافية",
-                "en": "Tailoring costs extra"
-              }
-            },
-            {
-              "rows.us": {
-                "ar": "خامة لا تشف ولا تكرمش",
-                "en": "Opaque, crease-resistant fabric"
-              },
-              "rows.them": {
-                "ar": "خامة خفيفة تبان وتتكرمش",
-                "en": "Thin fabric that shows and creases"
-              }
-            },
-            {
-              "rows.us": {
-                "ar": "6 أطوال من 52 لـ 62",
-                "en": "Six lengths from 52 to 62"
-              },
-              "rows.them": {
-                "ar": "طول واحد للكل",
-                "en": "One length for everyone"
-              }
-            },
-            {
-              "rows.us": {
-                "ar": "استبدال سهل خلال 7 أيام",
-                "en": "Easy exchange within 7 days"
-              },
-              "rows.them": {
-                "ar": "مفيش استبدال للمفصّل",
-                "en": "No exchange on tailored pieces"
-              }
-            },
-            {
-              "rows.us": {
-                "ar": "ترد عليك وحدة منّا على الواتساب",
-                "en": "One of us answers you on WhatsApp"
-              },
-              "rows.them": {
-                "ar": "ردود آلية بس",
-                "en": "Automated replies only"
-              }
-            }
-          ]
-        },
-        {
-          "id": "clr-line-l",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الفاتح</strong>"
-        },
-        {
-          "id": "l_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
-          "value": ""
-        },
-        {
-          "id": "l_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "clr-line-d",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الداكن</strong>"
-        },
-        {
-          "id": "d_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
-          "options": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            },
-            {
-              "label": "فاتح دائماً",
-              "value": "light",
-              "key": "light"
-            },
-            {
-              "label": "داكن دائماً",
-              "value": "dark",
-              "key": "dark"
-            }
-          ],
-          "selected": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ],
-          "value": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "التفصيل على مقاسك",
-      "icon": "sicon-edit",
-      "name": "custom-fit",
-      "key": "2ce8edaf-8ede-4724-b79c-24e7b07504e0",
-      "image": "",
-      "props": {
-        "min-height": "360px"
-      },
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "نفصّلها على مقاسك",
-            "en": "Tailored to your size"
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "الوصف",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "اكتبي مقاساتك ونفصّل العباية عليها",
-            "en": "Enter your measurements and we'll tailor the abaya"
-          }
-        },
-        {
-          "id": "section_id",
-          "type": "string",
-          "format": "text",
-          "label": "معرّف القسم (للروابط)",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
-          "minLength": 0,
-          "maxLength": 200,
-          "value": "tailor"
-        },
-        {
-          "id": "free_text",
-          "type": "string",
-          "format": "text",
-          "label": "شارة",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "التفصيل مجاني",
-            "en": "Free tailoring"
-          }
-        },
-        {
-          "id": "image",
-          "type": "string",
-          "format": "image",
-          "label": "صورة جنب الفورم (مثل رسمة المقاسات)",
-          "icon": "sicon-image",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "fields",
-          "type": "collection",
-          "format": "collection",
-          "required": false,
-          "minLength": 0,
-          "maxLength": 8,
-          "item_label": "مقاس",
-          "fields": [
-            {
-              "id": "fields.label",
-              "type": "string",
-              "format": "text",
-              "label": "اسم المقاس",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            },
-            {
-              "id": "fields.unit",
-              "type": "string",
-              "format": "text",
-              "label": "الوحدة",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "سم",
-                "en": "cm"
-              }
-            },
-            {
-              "id": "fields.hint",
-              "type": "string",
-              "format": "text",
-              "label": "توضيح صغير",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            }
-          ],
-          "value": [
-            {
-              "fields.label": {
-                "ar": "طولك",
-                "en": "Your height"
-              },
-              "fields.unit": {
-                "ar": "سم",
-                "en": "cm"
-              },
-              "fields.hint": {
-                "ar": "",
-                "en": ""
-              }
-            },
-            {
-              "fields.label": {
-                "ar": "الصدر",
-                "en": "Chest"
-              },
-              "fields.unit": {
-                "ar": "سم",
-                "en": "cm"
-              },
-              "fields.hint": {
-                "ar": "حول أعرض جزء",
-                "en": "Around the fullest part"
-              }
-            },
-            {
-              "fields.label": {
-                "ar": "الكتف",
-                "en": "Shoulder"
-              },
-              "fields.unit": {
-                "ar": "سم",
-                "en": "cm"
-              },
-              "fields.hint": {
-                "ar": "من طرف الكتف للطرف",
-                "en": "Edge to edge"
-              }
-            },
-            {
-              "fields.label": {
-                "ar": "طول الكم",
-                "en": "Sleeve length"
-              },
-              "fields.unit": {
-                "ar": "سم",
-                "en": "cm"
-              },
-              "fields.hint": {
-                "ar": "من الكتف للرسغ",
-                "en": "Shoulder to wrist"
-              }
-            }
-          ]
-        },
-        {
-          "id": "notes_placeholder",
-          "type": "string",
-          "format": "text",
-          "label": "النص داخل خانة الملاحظات",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "cf-line-1",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>إرسال المقاسات</strong>"
-        },
-        {
-          "id": "send_via",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "طريقة الإرسال",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "مع الطلب يحتاج تفعيل \"إضافة ملاحظة\" على المنتج في سلة، ومنتج بدون خيارات إجبارية",
-          "options": [
-            {
-              "label": "مع الطلب في السلة (لو المنتج يسمح بالملاحظات)",
-              "value": "cart",
-              "key": "cart"
-            },
-            {
-              "label": "على الواتساب فقط",
-              "value": "whatsapp",
-              "key": "whatsapp"
-            }
-          ],
-          "selected": [
-            {
-              "label": "مع الطلب في السلة (لو المنتج يسمح بالملاحظات)",
-              "value": "cart",
-              "key": "cart"
-            }
-          ],
-          "value": [
-            {
-              "label": "مع الطلب في السلة (لو المنتج يسمح بالملاحظات)",
-              "value": "cart",
-              "key": "cart"
-            }
-          ]
-        },
-        {
-          "id": "product",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "products",
-          "label": "المنتج",
-          "icon": "sicon-box",
-          "placeholder": "البحث في قائمة المنتجات...",
-          "required": false,
-          "description": "صفحة المنتج تستخدم منتجها تلقائياً",
-          "options": [],
-          "selected": [
-            {
-              "label": "عباية كل يوم",
-              "value": 1627464171,
-              "key": "1627464171"
-            }
-          ],
-          "value": [
-            {
-              "label": "عباية كل يوم",
-              "value": 1627464171,
-              "key": "1627464171"
-            }
-          ],
-          "searchable": true,
-          "multichoice": false
-        },
-        {
-          "id": "whatsapp",
-          "type": "string",
-          "format": "text",
-          "label": "رقم الواتساب",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": "9665XXXXXXXX",
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": ""
-        },
-        {
-          "id": "buy_text",
-          "type": "string",
-          "format": "text",
-          "label": "نص الزر",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "أضيفي للسلة بمقاساتي",
-            "en": "Add to cart with my measurements"
-          }
-        },
-        {
-          "id": "clr-line-l",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الفاتح</strong>"
-        },
-        {
-          "id": "l_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
-          "value": ""
-        },
-        {
-          "id": "l_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "clr-line-d",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الداكن</strong>"
-        },
-        {
-          "id": "d_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
-          "options": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            },
-            {
-              "label": "فاتح دائماً",
-              "value": "light",
-              "key": "light"
-            },
-            {
-              "label": "داكن دائماً",
-              "value": "dark",
-              "key": "dark"
-            }
-          ],
-          "selected": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ],
-          "value": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "تشكيلة المناسبة",
-      "icon": "sicon-gift",
-      "name": "occasion-edit",
-      "key": "0cd97f0d-327f-420f-b101-53c72ceddc92",
-      "image": "",
-      "props": {
-        "min-height": "480px"
-      },
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "نفس القصّة بألوان ثانية",
-            "en": "The same cut in other colors"
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "الوصف",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "اختاري لونك، وكل عباية بمقاسها للسلة على طول",
-            "en": "Pick your color, and each abaya goes to the cart in your size"
-          }
-        },
-        {
-          "id": "section_id",
-          "type": "string",
-          "format": "text",
-          "label": "معرّف القسم (للروابط)",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
-          "minLength": 0,
-          "maxLength": 200,
-          "value": "edit"
-        },
-        {
-          "id": "products",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "products",
-          "label": "عبايات التشكيلة",
-          "icon": "sicon-box",
-          "placeholder": "البحث في قائمة المنتجات...",
-          "required": false,
-          "description": "حتى 12 منتج. الألوان بتتجمع من خيار اللون في المنتجات",
-          "options": [],
-          "selected": [
-            {
-              "label": "عباية كل يوم",
-              "value": 1627464171,
-              "key": "1627464171"
-            },
-            {
-              "label": "عباية الحزام",
-              "value": 1728697337,
-              "key": "1728697337"
-            },
-            {
-              "label": "عباية الطبقات",
-              "value": 994547199,
-              "key": "994547199"
-            }
-          ],
-          "value": [
-            {
-              "label": "عباية كل يوم",
-              "value": 1627464171,
-              "key": "1627464171"
-            },
-            {
-              "label": "عباية الحزام",
-              "value": 1728697337,
-              "key": "1728697337"
-            },
-            {
-              "label": "عباية الطبقات",
-              "value": 994547199,
-              "key": "994547199"
-            }
-          ],
-          "searchable": true,
-          "multichoice": true
-        },
-        {
-          "id": "columns",
-          "type": "number",
-          "format": "number",
-          "inputType": "number",
-          "label": "عدد الأعمدة على الكمبيوتر",
-          "icon": "sicon-calculator",
-          "required": false,
-          "description": null,
-          "minimum": 2,
-          "maximum": 4,
-          "value": 3
-        },
-        {
-          "id": "buy_text",
-          "type": "string",
-          "format": "text",
-          "label": "نص الزر",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "أضيفي للسلة",
-            "en": "Add to cart"
-          }
-        },
-        {
-          "id": "clr-line-l",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الفاتح</strong>"
-        },
-        {
-          "id": "l_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
-          "value": ""
-        },
-        {
-          "id": "l_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "clr-line-d",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الداكن</strong>"
-        },
-        {
-          "id": "d_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
-          "options": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            },
-            {
-              "label": "فاتح دائماً",
-              "value": "light",
-              "key": "light"
-            },
-            {
-              "label": "داكن دائماً",
-              "value": "dark",
-              "key": "dark"
-            }
-          ],
-          "selected": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ],
-          "value": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "هتوصلك امتى",
-      "icon": "sicon-time",
-      "name": "delivery-eta",
-      "key": "569bd0da-3d4a-4c1d-a15a-d0a1b5343821",
-      "image": "",
-      "props": {
-        "min-height": "280px"
-      },
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "هتوصلك امتى؟",
-            "en": "When will it arrive?"
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "الوصف",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "section_id",
-          "type": "string",
-          "format": "text",
-          "label": "معرّف القسم (للروابط)",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
-          "minLength": 0,
-          "maxLength": 200,
-          "value": "delivery"
-        },
-        {
-          "id": "lead",
-          "type": "string",
-          "format": "text",
-          "label": "النص فوق العداد",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "اطلبي خلال",
-            "en": "Order within"
-          }
-        },
-        {
-          "id": "cutoff_hour",
-          "type": "number",
-          "format": "number",
-          "inputType": "number",
-          "label": "آخر ساعة للطلب في اليوم (0 – 24)",
-          "icon": "sicon-calculator",
-          "required": false,
-          "description": "بتوقيت المتجر. بعدها يبدأ التجهيز من يوم العمل التالي",
-          "minimum": 0,
-          "maximum": 24,
-          "value": 13
-        },
-        {
-          "id": "prep_days",
-          "type": "number",
-          "format": "number",
-          "inputType": "number",
-          "label": "أيام التجهيز",
-          "icon": "sicon-calculator",
-          "required": false,
-          "description": null,
-          "minimum": 0,
-          "maximum": 30,
-          "value": 1
-        },
-        {
-          "id": "ship_days",
-          "type": "number",
-          "format": "number",
-          "inputType": "number",
-          "label": "أيام الشحن",
-          "icon": "sicon-calculator",
-          "required": false,
-          "description": null,
-          "minimum": 0,
-          "maximum": 30,
-          "value": 2
-        },
-        {
-          "id": "off_days",
-          "type": "items",
-          "format": "checkbox-list",
-          "label": "أيام الإجازة",
-          "icon": "sicon-list",
-          "required": false,
-          "multichoice": true,
-          "description": null,
-          "options": [
-            {
-              "label": "الأحد",
-              "value": "0",
-              "key": "0"
-            },
-            {
-              "label": "الاثنين",
-              "value": "1",
-              "key": "1"
-            },
-            {
-              "label": "الثلاثاء",
-              "value": "2",
-              "key": "2"
-            },
-            {
-              "label": "الأربعاء",
-              "value": "3",
-              "key": "3"
-            },
-            {
-              "label": "الخميس",
-              "value": "4",
-              "key": "4"
-            },
-            {
-              "label": "الجمعة",
-              "value": "5",
-              "key": "5"
-            },
-            {
-              "label": "السبت",
-              "value": "6",
-              "key": "6"
-            }
-          ],
-          "selected": [
-            {
-              "label": "الجمعة",
-              "value": "5",
-              "key": "5"
-            }
-          ],
-          "value": [
-            {
-              "label": "الجمعة",
-              "value": "5",
-              "key": "5"
-            }
-          ]
-        },
-        {
-          "id": "tz_offset",
-          "type": "number",
-          "format": "number",
-          "inputType": "number",
-          "label": "فرق التوقيت عن UTC",
-          "icon": "sicon-calculator",
-          "required": false,
-          "description": "السعودية +3",
-          "minimum": -12,
-          "maximum": 14,
-          "value": 3
-        },
-        {
-          "id": "times",
-          "type": "collection",
-          "format": "collection",
-          "required": false,
-          "minLength": 0,
-          "maxLength": 4,
-          "item_label": "مدة",
-          "fields": [
-            {
-              "id": "times.label",
-              "type": "string",
-              "format": "text",
-              "label": "النوع",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            },
-            {
-              "id": "times.value",
-              "type": "string",
-              "format": "text",
-              "label": "المدة",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            }
-          ],
-          "value": [
-            {
-              "times.label": {
-                "ar": "الجاهزة",
-                "en": "Ready to wear"
-              },
-              "times.value": {
-                "ar": "تُشحن خلال يوم",
-                "en": "Ships in a day"
-              }
-            },
-            {
-              "times.label": {
-                "ar": "المفصّلة على مقاسك",
-                "en": "Tailored to your size"
-              },
-              "times.value": {
-                "ar": "من 7 لـ 10 أيام",
-                "en": "7 to 10 days"
-              }
-            }
-          ]
-        },
-        {
-          "id": "faqs",
-          "type": "collection",
-          "format": "collection",
-          "required": false,
-          "minLength": 0,
-          "maxLength": 6,
-          "item_label": "سؤال",
-          "fields": [
-            {
-              "id": "faqs.q",
-              "type": "string",
-              "format": "text",
-              "label": "السؤال",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "placeholder": null,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 200,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            },
-            {
-              "id": "faqs.a",
-              "type": "string",
-              "format": "textarea",
-              "label": "الإجابة",
-              "icon": "sicon-paragraph",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "maxLength": 1000,
-              "rows": 3,
-              "value": {
-                "ar": "",
-                "en": ""
-              }
-            }
-          ],
-          "value": [
-            {
-              "faqs.q": {
-                "ar": "لو الطول ما ناسبني؟",
-                "en": "What if the length doesn't fit?"
-              },
-              "faqs.a": {
-                "ar": "تقدرين تستبدلينها بطول ثاني خلال 7 أيام من الاستلام، بشرط ما تكون اتلبست أو اتغسلت.",
-                "en": "You can exchange it for another length within 7 days of delivery, as long as it was not worn or washed."
-              }
-            },
-            {
-              "faqs.q": {
-                "ar": "كيف أغسل العباية؟",
-                "en": "How do I wash the abaya?"
-              },
-              "faqs.a": {
-                "ar": "غسيل بارد على دورة خفيفة، أو تنظيف جاف. كوي على حرارة منخفضة من الداخل.",
-                "en": "Cold gentle wash or dry clean. Iron on low heat, inside out."
-              }
-            },
-            {
-              "faqs.q": {
-                "ar": "هل الطرحة معاها؟",
-                "en": "Does it come with a sheila?"
-              },
-              "faqs.a": {
-                "ar": "الطرحة تنباع لوحدها، وتقدرين تضيفينها من قسم أكملي اللوك.",
-                "en": "The sheila is sold on its own; add it from the complete the look section."
-              }
-            }
-          ]
-        },
-        {
-          "id": "clr-line-l",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الفاتح</strong>"
-        },
-        {
-          "id": "l_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
-          "value": ""
-        },
-        {
-          "id": "l_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "clr-line-d",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الداكن</strong>"
-        },
-        {
-          "id": "d_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
-          "options": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            },
-            {
-              "label": "فاتح دائماً",
-              "value": "light",
-              "key": "light"
-            },
-            {
-              "label": "داكن دائماً",
-              "value": "dark",
-              "key": "dark"
-            }
-          ],
-          "selected": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ],
-          "value": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "كارت الخصم",
-      "icon": "sicon-discount-coupon",
-      "name": "scratch-coupon",
-      "key": "61b31b21-0f0a-403a-9910-60c5ce870ee1",
-      "image": "",
-      "props": {
-        "min-height": "320px"
-      },
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "هدية لك",
-            "en": "A gift for you"
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "الوصف",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "اكشطي الكارت واكتشفي خصمك",
-            "en": "Scratch the card to find your discount"
-          }
-        },
-        {
-          "id": "section_id",
-          "type": "string",
-          "format": "text",
-          "label": "معرّف القسم (للروابط)",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": null,
-          "description": "كلمة إنجليزية بدون مسافات مثل notes، واكتبها في روابط رأس الصفحة لتنتقل لهذا القسم",
-          "minLength": 0,
-          "maxLength": 200,
-          "value": "gift"
-        },
-        {
-          "id": "code",
-          "type": "string",
-          "format": "text",
-          "label": "كود الخصم",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": null,
-          "description": "أنشئ الكوبون أولاً من التسويق > كوبونات التخفيض في سلة",
-          "minLength": 0,
-          "maxLength": 200,
-          "value": ""
-        },
-        {
-          "id": "discount_text",
-          "type": "string",
-          "format": "text",
-          "label": "نص العرض",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "خصم 10% على أول عباية",
-            "en": "10% off your first abaya"
-          }
-        },
-        {
-          "id": "hint",
-          "type": "string",
-          "format": "text",
-          "label": "نص فوق الغطاء",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "اكشطي هنا لتكشفي الكود",
-            "en": "Scratch here to reveal the code"
-          }
-        },
-        {
-          "id": "cover_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون الغطاء",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "اتركه فارغاً لاستخدام لون الأزرار",
-          "value": ""
-        },
-        {
-          "id": "cover_image",
-          "type": "string",
-          "format": "image",
-          "label": "صورة الغطاء (اختياري)",
-          "icon": "sicon-image",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "reveal_percent",
-          "type": "number",
-          "format": "number",
-          "inputType": "number",
-          "label": "نسبة الكشط لإظهار الكود (%)",
-          "icon": "sicon-calculator",
-          "required": false,
-          "description": null,
-          "minimum": 30,
-          "maximum": 80,
-          "value": 50
-        },
-        {
-          "id": "expires",
-          "type": "string",
-          "format": "datetime",
-          "inputType": "datetime-local",
-          "label": "ينتهي في (اختياري)",
-          "icon": "sicon-calendar-time",
-          "required": false,
-          "description": "بعد هذا الوقت يختفي القسم من الصفحة",
-          "value": ""
-        },
-        {
-          "id": "buy_text",
-          "type": "string",
-          "format": "text",
-          "label": "نص الزر",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": {
-            "ar": "اشتري الآن",
-            "en": "Buy now"
-          }
-        },
-        {
-          "id": "clr-line-l",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الفاتح</strong>"
-        },
-        {
-          "id": "l_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": "اتركها فارغة لتتبع ألوان الصفحة، والنصوص تُضبط تلقائياً لتكون واضحة",
-          "value": ""
-        },
-        {
-          "id": "l_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "l_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "clr-line-d",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>ألوان الوضع الداكن</strong>"
-        },
-        {
-          "id": "d_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_card",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "خلفية البطاقات",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_title",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "العناوين",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_text",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "النصوص",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "d_accent",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "الأزرار والتمييز",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
-          "options": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            },
-            {
-              "label": "فاتح دائماً",
-              "value": "light",
-              "key": "light"
-            },
-            {
-              "label": "داكن دائماً",
-              "value": "dark",
-              "key": "dark"
-            }
-          ],
-          "selected": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ],
-          "value": [
-            {
-              "label": "حسب وضع الصفحة",
-              "value": "auto",
-              "key": "auto"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "تذييل الصفحة",
-      "icon": "sicon-window-layout",
-      "name": "page-footer",
-      "key": "c04cbf23-2613-43cf-bc3b-9a893889ca45",
-      "image": "",
-      "props": {
-        "min-height": "160px"
-      },
-      "fields": [
-        {
-          "id": "logo",
-          "type": "string",
-          "format": "image",
-          "label": "الشعار",
-          "icon": "sicon-image",
-          "required": false,
-          "description": "اتركه فارغاً لاستخدام شعار متجرك",
-          "value": ""
-        },
-        {
-          "id": "logo_dark",
-          "type": "string",
-          "format": "image",
-          "label": "شعار الوضع الداكن",
-          "icon": "sicon-image",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "about",
-          "type": "string",
-          "format": "textarea",
-          "label": "نبذة قصيرة",
-          "icon": "sicon-paragraph",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "maxLength": 1000,
-          "rows": 3,
-          "value": {
-            "ar": "عبايات يومية بقصّات مريحة وأطوال تناسبك",
-            "en": "Everyday abayas in easy cuts and lengths that fit you"
-          }
-        },
-        {
-          "id": "ft-line-1",
-          "type": "static",
-          "format": "description",
-          "value": "<strong>التواصل</strong>"
-        },
-        {
-          "id": "phone",
-          "type": "string",
-          "format": "text",
-          "label": "رقم الجوال",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": "+966500000000",
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": ""
-        },
-        {
-          "id": "whatsapp",
-          "type": "string",
-          "format": "text",
-          "label": "رقم واتساب",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": "966500000000",
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": ""
-        },
-        {
-          "id": "email",
-          "type": "string",
-          "format": "text",
-          "label": "البريد الإلكتروني",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": false,
-          "required": false,
-          "placeholder": null,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 200,
-          "value": ""
-        },
-        {
-          "id": "social",
-          "type": "collection",
-          "format": "collection",
-          "required": false,
-          "minLength": 0,
-          "maxLength": 6,
-          "item_label": "حساب",
-          "fields": [
-            {
-              "id": "social.icon",
-              "type": "string",
-              "format": "icon",
-              "label": "الأيقونة",
-              "icon": "sicon-star2",
-              "required": false,
-              "class": "form--inline",
-              "value": "sicon-instagram"
-            },
-            {
-              "id": "social.url",
-              "type": "string",
-              "format": "url",
-              "label": "الرابط",
-              "icon": "sicon-link",
-              "required": false,
-              "description": null,
-              "value": ""
-            }
-          ],
-          "value": []
-        },
-        {
-          "id": "ft-line-2",
-          "type": "static",
-          "format": "line"
-        },
-        {
-          "id": "show_payments",
+          "id": "show_cta",
           "type": "boolean",
           "format": "switch",
-          "label": "إظهار وسائل الدفع المفعلة في المتجر",
+          "label": "إظهار الزرار في آخر القسم",
           "icon": "sicon-toggle-off",
           "required": false,
           "description": null,
@@ -4828,21 +2753,35 @@
           "selected": true
         },
         {
-          "id": "copyright",
+          "id": "cta_text",
           "type": "string",
           "format": "text",
-          "label": "نص الحقوق",
+          "label": "نص الزرار",
           "icon": "sicon-format-text-alt",
           "multilanguage": true,
           "required": false,
           "placeholder": null,
-          "description": "{year} تصبح السنة الحالية و{store} اسم متجرك",
+          "description": null,
           "minLength": 0,
           "maxLength": 200,
           "value": {
-            "ar": "© {year} {store}",
-            "en": "© {year} {store}"
+            "ar": "اطلبي عبايتك",
+            "en": "Order your abaya"
           }
+        },
+        {
+          "id": "cta_target",
+          "type": "string",
+          "format": "text",
+          "label": "معرّف القسم اللي الزرار ينزل له",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": false,
+          "required": false,
+          "placeholder": null,
+          "description": "top هو القسم الافتتاحي اللي فيه زرار الشراء",
+          "minLength": 0,
+          "maxLength": 200,
+          "value": "top"
         },
         {
           "id": "clr-line-l",
@@ -4974,7 +2913,7 @@
           "label": "وضع الألوان",
           "icon": "sicon-list",
           "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
+          "description": "حسب وضع الصفحة يتبع \"وضع الصفحة\" في القسم الافتتاحي، أو جهاز الزائر إذا لم تستخدمه",
           "options": [
             {
               "label": "حسب وضع الصفحة",
@@ -5235,7 +3174,7 @@
           "label": "وضع الألوان",
           "icon": "sicon-list",
           "required": false,
-          "description": "حسب وضع الصفحة يتبع زر الوضع في رأس الصفحة، أو جهاز الزائر إذا لم تستخدم رأس الصفحة",
+          "description": "حسب وضع الصفحة يتبع \"وضع الصفحة\" في القسم الافتتاحي، أو جهاز الزائر إذا لم تستخدمه",
           "options": [
             {
               "label": "حسب وضع الصفحة",

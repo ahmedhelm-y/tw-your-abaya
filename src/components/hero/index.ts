@@ -5,6 +5,7 @@ import { buyAction } from "../../utils/buy";
 import { resolveText, unwrapValue } from "../../utils/config";
 import { fetchProduct, money } from "../../utils/landing";
 import { AbySection, productIdFrom } from "../../utils/section";
+import { applyPageTheme, clearPageTheme } from "../../utils/theme";
 
 const css = `
 .aby-hero { position: relative; padding: 0; overflow: hidden; }
@@ -60,6 +61,13 @@ export default class Hero extends AbySection {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.media?.removeEventListener?.("change", this.onMedia);
+    clearPageTheme();
+  }
+
+  // The brand color and page mode are page-wide; the hero's own colors stay on the hero
+  protected willUpdate() {
+    const cfg = this.cfg();
+    applyPageTheme({ brand_color: cfg.brand_color, default_mode: cfg.default_mode });
   }
 
   private onMedia = (e: MediaQueryListEvent) => {

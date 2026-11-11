@@ -1,14 +1,14 @@
 import { html as s, nothing as o } from "lit";
 import { state as v } from "lit/decorators.js";
-import { g as k, r as h, t as d } from "./styles-vAeqvApy.js";
+import { g as k, r as h, t as d } from "./styles-C5ta92Qj.js";
 import { e as S, h as M } from "./fit-Cpxi4Lua.js";
-import { A as q } from "./section-Cbwxq9g0.js";
+import { A as q } from "./section-DksPXwqH.js";
 const f = 0.2;
 function z(l) {
   const e = l.map(Number).filter((a) => Number.isInteger(a) && a >= 1 && a <= 5), t = [5, 4, 3, 2, 1].map((a) => e.filter((i) => i === a).length);
   return { average: e.length ? Math.round(e.reduce((a, i) => a + i, 0) / e.length * 10) / 10 : 0, count: e.length, dist: t };
 }
-function A(l) {
+function C(l) {
   if (!Number.isFinite(l) || l < 0) return "0:00";
   const e = Math.floor(l);
   return `${Math.floor(e / 60)}:${String(e % 60).padStart(2, "0")}`;
@@ -24,7 +24,7 @@ function w(l, e) {
   }
   return r;
 }
-function C(l, e) {
+function A(l, e) {
   const t = Math.max(1, Math.floor(l.length / e)), r = [];
   for (let i = 0; i < e; i++) {
     let c = 0;
@@ -92,7 +92,7 @@ async function R(l, e) {
     const i = await a.arrayBuffer(), c = new r();
     try {
       const n = await c.decodeAudioData(i);
-      return C(n.getChannelData(0), e);
+      return A(n.getChannelData(0), e);
     } finally {
       (t = c.close) == null || t.call(c);
     }
@@ -269,7 +269,7 @@ class b extends q {
           @click=${(n) => this.seek(n, t)} @keydown=${(n) => this.seekKey(n, t)}>
           ${a.map((n, _) => s`<span class=${_ / a.length < i ? "is-done" : ""} style=${`height:${Math.round(n * 100)}%`}></span>`)}
         </button>
-        <span class="aby-rv__time">${A(r.playing || r.time ? r.time : r.duration)}</span>
+        <span class="aby-rv__time">${C(r.playing || r.time ? r.time : r.duration)}</span>
         <button type="button" class="aby-rv__rate" aria-label=${d({ ar: "سرعة التشغيل", en: "Playback speed" })} @click=${() => {
       var n;
       return (n = this.voice.get(t)) == null ? void 0 : n.setRate(c);
@@ -365,6 +365,7 @@ class b extends q {
     return this.frame(s`${t}
       ${e.length ? this.renderFilters(e) : o}
       ${e.length ? r.length ? s`<ul class="aby-rv__grid">${r.map(([a, i]) => this.renderCard(a, i))}</ul>` : s`<p class="aby-rv__none">${d({ ar: "مفيش آراء للطول ده لسه", en: "No reviews for this height yet" })}</p>` : o}
+      ${this.renderCta()}
       ${this.photo ? s`<dialog class="aby-rv__dialog" @close=${() => this.photo = ""} @click=${(a) => {
       a.target === a.currentTarget && this.closePhoto();
     }}>

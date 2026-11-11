@@ -346,6 +346,7 @@ export default class Reviews extends AbySection {
           ? html`<ul class="aby-rv__grid">${shown.map(([r, i]) => this.renderCard(r, i))}</ul>`
           : html`<p class="aby-rv__none">${t({ ar: "مفيش آراء للطول ده لسه", en: "No reviews for this height yet" })}</p>`
         : nothing}
+      ${this.renderCta()}
       ${this.photo
         ? html`<dialog class="aby-rv__dialog" @close=${() => (this.photo = "")} @click=${(e: Event) => { if (e.target === e.currentTarget) this.closePhoto(); }}>
             <img src=${this.photo} alt="" /><button type="button" class="aby-rv__close" aria-label=${t({ ar: "إغلاق", en: "Close" })} @click=${() => this.closePhoto()}>×</button>

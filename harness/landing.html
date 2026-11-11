@@ -75,18 +75,14 @@
     } else {
       components = (await fetch(template.endsWith(".json") ? template : fromRoot(`templates/${template}.json`)).then((r) => r.json())).components;
     }
-    if (params.get("noheader")) components = components.filter((c) => c.name !== "page-header");
     // Without ?product the page sells the template own abaya, as the merchant would set it
     const heroProduct = components.find((c) => c.name === "hero")?.fields.find((f) => f.id === "product")?.value?.[0]?.value;
     if (!params.get("product") && heroProduct && mode === "product") {
       Salla.config.set("theme.settings", { ...Salla.config.get("theme.settings"), product: { value: [String(heroProduct)] } });
     }
 
-    // ?pagemode=light|dark starts the page as if the shopper had used the header's switch
-    const header = components.find((c) => c.name === "page-header");
-    const base = header?.fields.find((f) => f.id === "default_mode")?.value?.[0]?.value || "light";
-    if (params.get("pagemode")) localStorage.setItem("aby-mode", JSON.stringify({ mode: params.get("pagemode"), base }));
-    else localStorage.removeItem("aby-mode");
+    // ?pagemode=light|dark|system overrides the hero's page mode
+    localStorage.removeItem("aby-mode");
 
     const page = document.getElementById("page");
     const only = params.get("only")?.split(",");
@@ -103,7 +99,8 @@
       const values = Object.fromEntries((component.fields || []).filter((f) => f.type !== "static").map((f) => [f.id, f.value]));
       if (params.get("scheme") && "color_scheme" in values) values.color_scheme = [{ value: params.get("scheme") }];
       // ?palette=<hex> sets the header brand color; ?<field>=<value> on fields prefixed f_ overrides any field
-      if (component.name === "page-header" && params.has("palette")) values.brand_color = params.get("palette");
+      if (component.name === "hero" && params.has("palette")) values.brand_color = params.get("palette");
+      if (component.name === "hero" && params.has("pagemode")) values.default_mode = [{ value: params.get("pagemode") }];
       for (const [key, value] of params) if (key.startsWith("f_") && key.slice(2) in values) values[key.slice(2)] = value;
       // ?c.<component>.<field>=<value> overrides a field on one component only
       for (const [key, value] of params) {
@@ -117,7 +114,7 @@
       el.setAttribute("assets", fromRoot(`dist/${component.name}.js`));
       el.setAttribute("config", JSON.stringify(wrapper));
       // Page length to scroll through before the footer, so sticky parts can be checked
-      if (component.name === "page-footer" && params.get("filler") !== "0") {
+      if (component.name === "sticky-buy" && params.get("filler") !== "0") {
         const filler = document.createElement("div");
         filler.className = "harness-filler";
         filler.textContent = "filler";
@@ -131,9 +128,8 @@
       checkout.className = "s-block s-block--fast-checkout";
       checkout.dataset.layout = layout;
       checkout.innerHTML = '<p>fast-checkout</p><salla-quantity-input value="1"></salla-quantity-input>';
-      // The real page puts the checkout after the sections; the footer still closes the page
-      const footer = [...page.children].find((el) => el.getAttribute?.("component-name") === "page-footer" || el.querySelector?.('[component-name="page-footer"]'));
-      footer ? page.insertBefore(checkout, footer) : page.appendChild(checkout);
+      // The real page puts the checkout after the sections
+      page.appendChild(checkout);
       checkout.querySelector("salla-quantity-input").addEventListener("change", (e) => {
         window.harnessLog.push(`quantity:${e.detail ?? e.target.value}`);
         log(`fast-checkout quantity changed to ${e.detail ?? e.target.value}`);

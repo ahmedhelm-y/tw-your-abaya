@@ -1,6 +1,6 @@
 {
     "name": "tw-your-abaya",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Your abaya landing page components and templates for Salla landing pages",
     "type": "module",
     "scripts": {

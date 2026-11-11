@@ -2,10 +2,9 @@ import { html as r, nothing as b } from "lit";
 import { state as g } from "lit/decorators.js";
 import { unsafeHTML as y } from "lit/directives/unsafe-html.js";
 import { i as S, v as z, t as A, o as P, b as j } from "./bundle-MR6k8MyO.js";
-import { b as L } from "./buy-D6n2j5jF.js";
-import { f as q, t as l, m as u, a as B, i as N, r as C } from "./styles-vAeqvApy.js";
+import { f as L, t as l, m as u, a as q, i as B, r as C, b as N } from "./styles-C5ta92Qj.js";
 import { o as O } from "./fit-Cpxi4Lua.js";
-import { A as I, p as T } from "./section-Cbwxq9g0.js";
+import { A as I, p as T } from "./section-DksPXwqH.js";
 var E = Object.defineProperty, _ = (n, e, t, i) => {
   for (var a = void 0, s = n.length - 1, m; s >= 0; s--)
     (m = n[s]) && (a = m(e, t, a) || a);
@@ -54,7 +53,7 @@ class p extends I {
   }
   async connectedCallback() {
     super.connectedCallback();
-    const e = this.cfg(), t = e.include_main !== !1 ? T(e, "main_product") : null, i = [.../* @__PURE__ */ new Set([...t ? [t] : [], ...K(e.products)])].slice(0, 6), a = (await Promise.all(i.map((s) => q(s)))).filter((s) => s && S(s));
+    const e = this.cfg(), t = e.include_main !== !1 ? T(e, "main_product") : null, i = [.../* @__PURE__ */ new Set([...t ? [t] : [], ...K(e.products)])].slice(0, 6), a = (await Promise.all(i.map((s) => L(s)))).filter((s) => s && S(s));
     this.lines = a.map((s) => ({
       product: s,
       quantity: 1,
@@ -97,7 +96,7 @@ class p extends I {
         </span>
       </button>
       ${a.length ? r`<div class="aby-bb__opts">${a.map((o) => {
-      const x = s.includes(Number(o.id)), w = `aby-bb-${i.id}-${o.id}`, d = O(o, B());
+      const x = s.includes(Number(o.id)), w = `aby-bb-${i.id}-${o.id}`, d = O(o, q());
       return r`<label class="aby-visually-hidden" for=${w}>${d}</label>
               <select id=${w} aria-invalid=${x ? "true" : "false"} @change=${(c) => this.setOption(t, o.id, c.target.value)}>
                 <option value="">${l({ ar: `اختاري ${d}`, en: `Choose ${d}` })}</option>
@@ -109,8 +108,8 @@ class p extends I {
   }
   render() {
     if (!this.lines.length)
-      return !this.loaded || N() ? b : this.frame(r`<p class="aby-bb__empty">${l({ ar: "اختر قطع اللوك من إعدادات هذا القسم", en: "Pick the look's pieces in this section's settings" })}</p>`);
-    const e = j(this.lines), t = C(this.cfg().offer_text), i = L({ items: [{ id: "x", quantity: 1 }] }) !== "none";
+      return !this.loaded || B() ? b : this.frame(r`<p class="aby-bb__empty">${l({ ar: "اختر قطع اللوك من إعدادات هذا القسم", en: "Pick the look's pieces in this section's settings" })}</p>`);
+    const e = j(this.lines), t = C(this.cfg().offer_text), i = N({ items: [{ id: "x", quantity: 1 }] }) !== "none";
     return this.frame(r`<ul class="aby-bb__grid">${this.lines.map((a, s) => this.renderCard(a, s))}</ul>
       <div class="aby-bb__bar">
         <div class="aby-bb__sum" aria-live="polite">
